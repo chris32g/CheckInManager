@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity2"
+    tools:layout_editor_absoluteY="73dp">
+
+    <EditText
+        android:id="@+id/nMatricula"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/ingreseMatriculaHint"
+        android:inputType="text"
+        android:shadowColor="#FFFF00"
+        android:singleLine="false"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nKilometros"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nKilometros"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="199dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/ingreseKilometrosHint"
+        android:inputType="number"
+        android:singleLine="false"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nContrato"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCombustible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nMatricula" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
+        android:onClick="onClick"
+        android:text="@string/buttonCheckCar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonExport"
+        app:layout_constraintTop_toBottomOf="@+id/checkTransfer" />
+
+    <CheckBox
+        android:id="@+id/checkTransfer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="32dp"
+        android:buttonTint="#F3ED2F"
+        android:text="@string/checkTransfer"
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etComentarios"
+        app:layout_constraintTop_toBottomOf="@+id/checkNuevoDaño" />
+
+    <CheckBox
+        android:id="@+id/checkNuevoDaño"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:buttonTint="#F3ED2F"
+        android:text="@string/checkNuevoDano"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/checkTransfer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nContrato"
+        app:layout_constraintTop_toBottomOf="@+id/fechahora" />
+
+    <Spinner
+        android:id="@+id/spinnerCombustible"
+        android:layout_width="158dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="80dp"
+        android:background="#FFFFFF"
+        android:entries="@array/SpinnerCombustible"
+        android:gravity="center_horizontal|center"
+        android:spinnerMode="dialog"
+        android:textAlignment="gravity"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nKilometros"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="182dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="204dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="@string/textoCombustible"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nMatricula"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nContrato"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/ingreseContratoHint"
+        android:inputType="number"
+        android:maxLength="9"
+        android:numeric="integer"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/etComentarios"
+        app:layout_constraintEnd_toStartOf="@+id/checkNuevoDaño"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nKilometros" />
+
+    <EditText
+        android:id="@+id/etComentarios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/ingreseComentariosHint"
+        android:inputType="text|textLongMessage"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/buttonExport"
+        app:layout_constraintEnd_toStartOf="@+id/checkTransfer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nContrato" />
+
+    <Button
+        android:id="@+id/buttonExport"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginStart="21dp"
+        android:text="Exportar CSV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etComentarios" />
+
+    <TextView
+        android:id="@+id/fechahora"
+        android:layout_width="183dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="141dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/checkNuevoDaño"
+        app:layout_constraintStart_toEndOf="@+id/nMatricula"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
