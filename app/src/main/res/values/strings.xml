@@ -26,7 +26,8 @@
     <string name="checkTransfer">Transfer</string>
     <string name="title_activity_check_new_car">CheckNewCar</string>
     <string name="CancelarBt">Cancelar</string>
-    <string name="GuardarBt">Guardar</string>
+    <string name="GuardarBt">Guardar</string> Exportar CSV
+    <string name="ExportarcsvButton">Exportar CSV</string>
 
     //Items del spinner de combustible
     <string-array name="SpinnerCombustible">

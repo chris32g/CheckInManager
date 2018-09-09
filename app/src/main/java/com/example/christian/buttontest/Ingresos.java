@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.view.View;
@@ -59,6 +60,7 @@ public class Ingresos extends AppCompatActivity {
         addListenerOnButton();
         listenerOnSecondButton();
         checkTransferListener();
+        listenerOnClearButton();
         onUnfocusedTextMatricula();
         hora=getHour();
         setTVHour();
@@ -119,10 +121,10 @@ public class Ingresos extends AppCompatActivity {
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
-                                      if (getTransfer() == "si") {
+                                      if (getTransfer().equals("si")) {
                                         generateTransfer(Ingresos.this, "transfers " + getDay() +".csv", getTransferData());
                                     }
-                                    if (getDanos() == "si") {
+                                    if (getDanos().equals("si")) {
                                         String subject = "parte " + getMatricula();
                                         String bodyText = getDay() + " " + hora + "\n"
                                                 + getKm() + " km " + getFuel() + "/8" + "\n"
@@ -215,7 +217,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public void checkTransferListener(){
-        CheckBox checkTransfer = (CheckBox) findViewById(R.id.checkTransfer);
+        CheckBox checkTransfer = findViewById(R.id.checkTransfer);
         checkTransfer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -254,7 +256,7 @@ public class Ingresos extends AppCompatActivity {
         alertDialog.setNegativeButton("Cancelar",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        CheckBox checkTransfer = (CheckBox) findViewById(R.id.checkTransfer);
+                        CheckBox checkTransfer = findViewById(R.id.checkTransfer);
                         checkTransfer.setChecked(false);
                         dialog.cancel();
                     }
@@ -265,7 +267,7 @@ public class Ingresos extends AppCompatActivity {
     //area de getters
 
     public String getActivity2Sdata(){
-        String entry = getMatricula() + "," +
+        return getMatricula() + "," +
                 numVh + "," +
                 modeloVh + "," +
                 //claseVh + "," +"\t" +
@@ -279,12 +281,11 @@ public class Ingresos extends AppCompatActivity {
                // getGPS() + "," +"\t" +
                 getTransfer() + "," +
                 getComents() + "," + "\n";
-        return entry;
-    }
+            }
 
     public String getTransferData(){
 
-        String entry = getMatricula() + "," +
+        return getMatricula() + "," +
                 numVh + "," +
                 modeloVh + "," +
                // claseVh + "," +
@@ -296,7 +297,6 @@ public class Ingresos extends AppCompatActivity {
                 getDanos() + "," +
                 destinacion + "," +
                 getComents() + "," + "\n";
-        return entry;
     }
 
     public void getCarInfo() {
@@ -345,31 +345,27 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public String getHour(){
-        String hourString = new SimpleDateFormat("kk:mm").format(new Date(System.currentTimeMillis()));
-        return hourString;
+        return new SimpleDateFormat("kk:mm").format(new Date(System.currentTimeMillis()));
     }
 
     public String getNumVehiculo(){
         TextView nVehiculo = findViewById(R.id.nVehiculo);
-    String num = nVehiculo.getText().toString().trim();
-    return num;
+    return nVehiculo.getText().toString().trim();
     }
 
     public String getDay(){
-        String dateString = new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
-        return dateString;
+        return new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
     }
 
     public int getKm(){
         EditText nkm = findViewById(R.id.nKilometros);
         try {
-            int nkmNumeric = Integer.parseInt(nkm.getText().toString());
-            return nkmNumeric;
+            return Integer.parseInt(nkm.getText().toString());
         }catch (Exception e){return 0;}
     }
 
     public void ListenerEditTextMatricula(){
-        final EditText matricula = (EditText)findViewById(R.id.nMatricula);
+        final EditText matricula =findViewById(R.id.nMatricula);
 
         matricula.addTextChangedListener(new TextWatcher() {
             @Override
@@ -419,8 +415,9 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public void setTVHour(){
-        final TextView horaTV = (TextView) findViewById(R.id.fechahora);
-        horaTV.setText(hora + " " + getDay());
+        final TextView horaTV =  findViewById(R.id.fechahora);
+        String textHora = hora + " " + getDay();
+        horaTV.setText(textHora);
         horaTV.postInvalidate();
     }
 
@@ -463,14 +460,13 @@ public class Ingresos extends AppCompatActivity {
 
     public String getComents(){
         EditText comentariosEt =  findViewById(R.id.etComentarios);
-        String comentarios = comentariosEt.getText().toString();
-        return comentarios;
+        return comentariosEt.getText().toString();
     }
 
     public String getMatricula(){
         EditText nMatricula =  findViewById(R.id.nMatricula);
         textoMatricula = nMatricula.getText().toString().toUpperCase().trim();
-        if (textoMatricula == "") {
+        if (textoMatricula.equals("")) {
             return "";
         }else{
         return  textoMatricula;}
@@ -507,11 +503,24 @@ public class Ingresos extends AppCompatActivity {
                 String[] emails = {"chris32p@gmail.com","spbcn61@hertz.com, Checkinhertz.sans@grupounoctc.com"};
                 String subject = "Entradas " + getDay();
                 String bodyText = "Entradas ocurridas el dia " + getDay() +"hasta las: " + getHour();
-                Boolean adjunto = true;
+                Boolean adjunto = true;                                                                             //cambiar por verificacion real
                 sendEmail(emails, subject,bodyText,adjunto);
             }
         });
     }
+
+    public void listenerOnClearButton() {
+
+        ImageButton clearBtn = findViewById(R.id.clearButton);
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               blanqueator();
+            }
+        });
+    }
+
+
 
     public void sendEmail (String[] emails, String subject, String bodyText, Boolean adjunto){
         String fileNom = "checkin" + getDay() + ".csv";
@@ -522,13 +531,13 @@ public class Ingresos extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         File root = new File(Environment.getExternalStorageDirectory(), "IngresosHertz");
         File file = new File(root, fileNom);
-        if(adjunto == true) {
+        if(adjunto) {
            if (file.exists()){
                 Uri uri = Uri.fromFile(file);
                 emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
                 startActivity(Intent.createChooser(emailIntent, "gmail :"));
                 getToast("envio exitoso", 0);
-           } else if (adjunto == false) {
+           } else if (!adjunto) {
                startActivity(Intent.createChooser(emailIntent, "gmail :"));
                getToast("envio de daños exitoso", 0);
            } else if (!file.exists()){
@@ -622,9 +631,8 @@ public class Ingresos extends AppCompatActivity {
     private void checkpermission(){        String[] PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (!hasPermissions(mContext, PERMISSIONS)) {
             ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST );
-        } else {
-            //do here
-        }}
+        }
+    }
 
     private static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
