@@ -32,7 +32,6 @@ public class DialogAddVh extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.addvhtodb, null);
         final EditText edtNumVh = view.findViewById(R.id.vhNumFsDialog);
         final EditText edtModeloVh = view.findViewById(R.id.modelVhFsDialog);
-        final EditText edtClaseVh = view.findViewById(R.id.claseVhFsDialog);
 
         builder.setView(view).setTitle("Registro de Vehiculo")
                 .setNegativeButton("Atrás", new DialogInterface.OnClickListener() {
@@ -62,12 +61,7 @@ public class DialogAddVh extends AppCompatDialogFragment {
                     carModelVh = edtModeloVh.getText().toString().trim();
                 }catch (Exception e){carModelVh= "Sin Modelo";}
 
-                String carClaseVh;
-                try {
-                    carClaseVh = edtClaseVh.getText().toString().trim();
-                }catch (Exception e){carClaseVh= "XX";}
-
-                // Gets the data repository in write mode
+                                // Gets the data repository in write mode
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
 
                 // Create a new map of values, where column names are the keys
@@ -75,7 +69,6 @@ public class DialogAddVh extends AppCompatDialogFragment {
                 values.put(FeedReaderContract.FeedEntry1.CAMPO1, textoMatricula);
                 values.put(FeedReaderContract.FeedEntry1.CAMPO2, carNum);
                 values.put(FeedReaderContract.FeedEntry1.CAMPO3, carModelVh);
-                values.put(FeedReaderContract.FeedEntry1.CAMPO4, carClaseVh);
 
                 // Insert the new row, returning the primary key value of the new row
                 db.insert(FeedReaderContract.FeedEntry1.TABLE1_NAME, null, values);
