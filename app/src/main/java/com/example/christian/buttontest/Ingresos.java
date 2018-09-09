@@ -520,8 +520,6 @@ public class Ingresos extends AppCompatActivity {
         });
     }
 
-
-
     public void sendEmail (String[] emails, String subject, String bodyText, Boolean adjunto){
         String fileNom = "checkin" + getDay() + ".csv";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);

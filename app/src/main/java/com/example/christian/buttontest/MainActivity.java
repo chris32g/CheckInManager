@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         ButtonSearchEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "funcion en desarrollo", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(MainActivity.this, getEntries.class);
+                startActivity(i);
             }
         });
     }

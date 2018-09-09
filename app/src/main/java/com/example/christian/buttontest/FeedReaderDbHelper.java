@@ -1,8 +1,13 @@
 package com.example.christian.buttontest;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
@@ -26,5 +31,32 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    public String getDay(){
+        return new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
+    }
+
+    public ArrayList llenar_lv(){
+        ArrayList<String> lista = new ArrayList<>();
+        SQLiteDatabase database = this.getWritableDatabase();
+        String q = "select Matricula, modelo, numerovehiculo, numerodecontrato, horaentrada, kilometrosentrada, niveldecombustible, nuevosdaños, comentarios\n" +
+                "from DatosChekins\n" +
+                "where fechaentrada = " + getDay() + ";";
+        Cursor cursor = database.rawQuery(q,null);
+        if(cursor.moveToFirst()){
+            do{
+                lista.add(cursor.getString(0));
+             
+             
+             
+             
+             
+             
+             
+             
+            }while(cursor.moveToNext());
+        }
+        return lista;
     }
 }
