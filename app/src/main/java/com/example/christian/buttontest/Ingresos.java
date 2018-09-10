@@ -393,13 +393,15 @@ public class Ingresos extends AppCompatActivity {
         textMatricula.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (!b && carExist()) {
-                    TextView nVehiculo = findViewById(R.id.nVehiculo);
-                    getCarInfo();
-                    nVehiculo.setText(numVh);
-                } else if (!carExist()) {
-                    getMatricula();
-                    openDialog();
+                if(!getMatricula().equals("")) {
+                    if (!b && carExist()) {
+                        TextView nVehiculo = findViewById(R.id.nVehiculo);
+                        getCarInfo();
+                        nVehiculo.setText(numVh);
+                    } else if (!carExist()) {
+                        getMatricula();
+                        openDialog();
+                    }
                 }
                 }
 

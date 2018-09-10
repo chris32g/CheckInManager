@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -24,18 +25,30 @@ public class getEntries extends AppCompatActivity {
     ArrayList<String>modelo;
     ListView listViewCoches;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_entries);
         listViewCoches = findViewById(R.id.listView);
-        EditText day = findViewById(R.id.edtFecha);
-        day.setText(getDay());
-        onClickSelectDate();
-        //FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
-        //consultarlista();
-        ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lista);
+        SearchView buscador = findViewById(R.id.searchView);
+        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
+        consultarlista();
+        final ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lista);
         listViewCoches.setAdapter(adaptador);
+        buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adaptador.getFilter().filter(s);
+                return false;
+            }
+        });
     }
 
     private void consultarlista(){
@@ -43,49 +56,43 @@ public class getEntries extends AppCompatActivity {
         lista = new ArrayList<String>();
         FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
         SQLiteDatabase database = dbHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT matricula, modelo, NumeroVehiculo, NumeroDeContrato," +
-                " HoraEntrada, KilometrosEntrada, NivelDeCombustible, NuevosDaños, Comentarios, FechaEntrada FROM DatosChekins WHERE FechaEntrada = ? ",new String[]{dia});
+        String[] projection = {
+                FeedReaderContract.FeedEntry2.CAMPO1,
+                FeedReaderContract.FeedEntry2.CAMPO2,
+                FeedReaderContract.FeedEntry2.CAMPO4,
+                FeedReaderContract.FeedEntry2.CAMPO7,
+                FeedReaderContract.FeedEntry2.CAMPO8,
+                FeedReaderContract.FeedEntry2.CAMPO9,
+                FeedReaderContract.FeedEntry2.CAMPO6
+        };
+        String selection = "";//FeedReaderContract.FeedEntry1.CAMPO1 + " = ?";
+        String[] selectionArgs = {dia};
+        Cursor cursor = database.query(
+                FeedReaderContract.FeedEntry2.TABLE2_NAME,                       // The table to query
+                projection,                                                      // The array of columns to return (pass null to get all)
+                selection,                                                      // The columns for the WHERE clause
+                null,//selectionArgs,                              // The values for the WHERE clause
+                null,                                                    // don't group the rows
+                null,                                                    // don't filter by row groups
+                FeedReaderContract.FeedEntry2.CAMPO6 + " DESC"         // The sort order
+        );
+
+        /*Cursor cursor = database.rawQuery("SELECT matricula, modelo, NumeroVehiculo, NumeroDeContrato," +
+                " HoraEntrada, KilometrosEntrada, NivelDeCombustible, NuevosDaños, Comentarios, FechaEntrada FROM DatosChekins",
+                null, null, FechaEntrada + "DESC");/*" WHERE FechaEntrada = ? ",new String[]{dia});*/
         int cursorLenght = cursor.getCount();
         cursor.moveToFirst();
             for(int i=0; i<cursorLenght;i++)
             {
                 lista.add(cursor.getString(0) +"\n"
-                        + cursor.getString(1)  + "   " + cursor.getString(4) + "    " + cursor.getString(5) + "    " + cursor.getString(6)+ "/8   " + cursor.getString(2));
+                        + cursor.getString(1)  + "   " + cursor.getString(2) + "    " + cursor.getString(3) + "    " + cursor.getString(4)+ "/8   " + cursor.getString(5)+ "    " +cursor.getString(6));
                 cursor.moveToNext();
             }
             cursor.close();
             database.close();
             }
 
-    public void onClickSelectDate() {
-        EditText selectDate = findViewById(R.id.edtFecha);
-        selectDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.edtFecha:
-                        showDatePickerDialog();
-                        break;
-                }
-            }
-        });
-    }
-
-    private void showDatePickerDialog() {
-        final EditText etPlannedDate = findViewById(R.id.edtFecha);
-        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                // +1 because january is zero
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
-                etPlannedDate.setText(selectedDate);
-            }
-        });
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }
-
-
-    public String getDay(){
+        public String getDay(){
         return new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
     }
 }

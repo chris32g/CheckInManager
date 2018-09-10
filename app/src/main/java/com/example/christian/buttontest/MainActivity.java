@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //onclickSearchEntry();
+        onclickSearchEntry();
         onclickTransfer();
         ButonInsertNewArrive = findViewById(R.id.ButonInsertNewArrive);
         ButonInsertNewArrive.setOnClickListener(new View.OnClickListener() {
