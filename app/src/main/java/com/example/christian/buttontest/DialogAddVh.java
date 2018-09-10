@@ -47,21 +47,20 @@ public class DialogAddVh extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int id) {
 
                 int carNum = 0;
+                String carModelVh="";
                 try {
                     String carNumLength = edtNumVh.getText().toString().trim();
                     if (carNumLength.length() !=7){
                         Toast.makeText(getActivity(), "Numero de Vehiculo Incorrecto", Toast.LENGTH_SHORT).show();
                     }else{
                         carNum = Integer.parseInt(edtNumVh.getText().toString().trim());
+                        try {
+                            carModelVh = edtModeloVh.getText().toString().trim();
+                        }catch (Exception e){carModelVh= "Sin Modelo";}
                     }
                 }catch (Exception e){carNum= 0000000;}
 
-                String carModelVh;
-                try {
-                    carModelVh = edtModeloVh.getText().toString().trim();
-                }catch (Exception e){carModelVh= "Sin Modelo";}
-
-                                // Gets the data repository in write mode
+                // Gets the data repository in write mode
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
 
                 // Create a new map of values, where column names are the keys
