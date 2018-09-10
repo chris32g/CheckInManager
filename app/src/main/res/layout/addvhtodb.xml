@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/DialFullScreen"
     android:layout_width="match_parent"
-    android:theme="@android:style/Theme.Holo.Dialog"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.Holo.Dialog">
 
     <EditText
         android:id="@+id/matriculaVhFsDialog"
@@ -17,6 +16,7 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="#ffff00"
         android:ems="10"
+        android:hint="@string/ingreseMatriculaHint"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#ffff00"
@@ -33,13 +33,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#FFFF00"
         android:ems="10"
-        android:maxLength="7"
         android:gravity="center"
         android:hint="@string/ingresevhNumHint"
         android:inputType="number"
+        android:maxLength="7"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFF00"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#FFFF00"
         android:ems="10"
         android:hint="@string/ingreseModeloVhHint"
@@ -70,30 +70,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vhNumFsDialog" />
-
-    <EditText
-        android:id="@+id/claseVhFsDialog"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
-        android:backgroundTint="#ffff00"
-        android:ems="10"
-        android:hint="@string/ingreseClaseVhHint"
-        android:inputType="textCapCharacters"
-        android:maxLength="2"
-        android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#ffff00"
-        android:textColorHint="#FFFFFF"
-        android:textColorLink="#FFFF00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modelVhFsDialog"
-        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
