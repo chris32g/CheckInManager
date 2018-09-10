@@ -1,8 +1,13 @@
 package com.example.christian.buttontest;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
@@ -27,4 +32,10 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
+
+    public String getDay(){
+        return new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
+    }
+
+
 }

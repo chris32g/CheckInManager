@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Ingresos" />
-
+        <activity android:name=".getEntries"></activity>
     </application>
 
 </manifest>

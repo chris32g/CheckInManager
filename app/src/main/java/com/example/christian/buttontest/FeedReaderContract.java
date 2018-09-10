@@ -1,7 +1,11 @@
 package com.example.christian.buttontest;
 //Esta clase contiene la estructura de la BBDD
 
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 public class FeedReaderContract {
     // To prevent someone from accidentally instantiating the contract class,
@@ -64,4 +68,6 @@ public class FeedReaderContract {
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedEntry1.TABLE1_NAME;
             //"DROP TABLE IF EXISTS " + FeedEntry2.TABLE2_NAME;
+
+
 }

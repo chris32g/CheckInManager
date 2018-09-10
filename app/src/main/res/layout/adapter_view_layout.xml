@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/tvMatricula"
+        android:layout_width="105dp"
+        android:layout_height="60dp"
+        android:layout_weight="66.6"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvModelo"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:text="TextView"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvComb"
+        app:layout_constraintStart_toStartOf="@+id/tvHoraEntrada"
+        app:layout_constraintTop_toTopOf="@+id/tvComb" />
+
+    <TextView
+        android:id="@+id/tvKm"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="18sp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHoraEntrada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvHoraEntrada"
+        app:layout_constraintTop_toTopOf="@+id/tvHoraEntrada" />
+
+    <TextView
+        android:id="@+id/tvComb"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="18sp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toEndOf="@+id/tvModelo"
+        tools:layout_editor_absoluteY="30dp" />
+
+    <TextView
+        android:id="@+id/tvHoraEntrada"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="18sp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvMatricula"
+        tools:layout_editor_absoluteY="0dp" />
+
+</android.support.constraint.ConstraintLayout>
