@@ -46,7 +46,7 @@ public class Ingresos extends AppCompatActivity {
     private Spinner spinnerCombustible;
     public Button btnSubmit;// = findViewById(R.id.btnSubmit);
     public Dialog dialog;
-    public static String textoMatricula, modeloVh, claseVh, numVh, destinacion, hora;
+    public static String textoMatricula, modeloVh, claseVh, numVh="", destinacion, hora;
     public String emails = "chris32p@gmail.com, gescofet@hertz.com, spbcn61@hertz.com, juan.cano@grupounoctc.com, Checkinhertz.sans@grupounoctc.com";
     public String[] emailsList = emails.split(",");
     public static Boolean returnedDialog;
@@ -202,7 +202,7 @@ public class Ingresos extends AppCompatActivity {
         String selectString = "SELECT * FROM " + FeedReaderContract.FeedEntry1.TABLE1_NAME + " WHERE " + FeedReaderContract.FeedEntry1.CAMPO1 + " =?";
 
         // Add the String you are searching by here.
-        String[] selectionArgs = { getMatricula() };
+        String[] selectionArgs = {getMatricula()};
         // Put it in an array to avoid an unrecognized token error
         Cursor cursor = db.rawQuery(selectString, selectionArgs);
 
@@ -211,8 +211,8 @@ public class Ingresos extends AppCompatActivity {
             carExist = true;
         }
 
-        cursor.close();          // Dont forget to close your cursor
-        db.close();              //AND your Database!
+        cursor.close();
+        db.close();
         return carExist;
     }
 
@@ -366,6 +366,7 @@ public class Ingresos extends AppCompatActivity {
 
     public void ListenerEditTextMatricula(){
         final EditText matricula =findViewById(R.id.nMatricula);
+        final TextView nVehiculo = findViewById(R.id.nVehiculo);
 
         matricula.addTextChangedListener(new TextWatcher() {
             @Override
@@ -378,18 +379,7 @@ public class Ingresos extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (matricula.getText().toString().length() >=7){
-                if (carExist()){
-                    TextView nVehiculo = findViewById(R.id.nVehiculo);
-                    getCarInfo();
-                    nVehiculo.setText(numVh);
-                } else if (!carExist()) {
-                    getMatricula();
-                    openDialog();
-                    } else {
-                    getToast("error no esperado",0);
-                }
-                }
+
               hora=getHour();
               setTVHour();
             }
@@ -407,8 +397,11 @@ public class Ingresos extends AppCompatActivity {
                     TextView nVehiculo = findViewById(R.id.nVehiculo);
                     getCarInfo();
                     nVehiculo.setText(numVh);
+                } else if (!carExist()) {
+                    getMatricula();
+                    openDialog();
                 }
-                      }
+                }
 
 
         });

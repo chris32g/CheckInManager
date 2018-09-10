@@ -36,4 +36,6 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public String getDay(){
         return new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
     }
+
+
 }

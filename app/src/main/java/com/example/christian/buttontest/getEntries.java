@@ -32,7 +32,7 @@ public class getEntries extends AppCompatActivity {
         EditText day = findViewById(R.id.edtFecha);
         day.setText(getDay());
         onClickSelectDate();
-        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
+        //FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
         //consultarlista();
         ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lista);
         listViewCoches.setAdapter(adaptador);
@@ -55,8 +55,7 @@ public class getEntries extends AppCompatActivity {
             }
             cursor.close();
             database.close();
-            dbHelper.close();
-    }
+            }
 
     public void onClickSelectDate() {
         EditText selectDate = findViewById(R.id.edtFecha);
