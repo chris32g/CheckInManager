@@ -74,7 +74,8 @@ public class getEntries extends AppCompatActivity {
                 null,//selectionArgs,                              // The values for the WHERE clause
                 null,                                                    // don't group the rows
                 null,                                                    // don't filter by row groups
-                FeedReaderContract.FeedEntry2.CAMPO6 + " DESC"         // The sort order
+                FeedReaderContract.FeedEntry2.CAMPO6 + " DESC," +
+                        FeedReaderContract.FeedEntry2.CAMPO7 + " DESC"          // The sort order
         );
 
         /*Cursor cursor = database.rawQuery("SELECT matricula, modelo, NumeroVehiculo, NumeroDeContrato," +

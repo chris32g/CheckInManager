@@ -270,15 +270,12 @@ public class Ingresos extends AppCompatActivity {
         return getMatricula() + "," +
                 numVh + "," +
                 modeloVh + "," +
-                //claseVh + "," +"\t" +
                 getContractNumber() + "," +
                 getDay() + "," +
                 hora + "," +
                 getKm() + "," +
                 getFuel() + "," +
                 getDanos() + "," +
-               // getSillita() + "," +"\t" +
-               // getGPS() + "," +"\t" +
                 getTransfer() + "," +
                 getComents() + "," + "\n";
             }
@@ -287,15 +284,13 @@ public class Ingresos extends AppCompatActivity {
 
         return getMatricula() + "," +
                 numVh + "," +
-                modeloVh + "," +
-               // claseVh + "," +
                 getContractNumber() + "," +
-                getDay() + "," +
+                getDay() + " " +
                 getHour() + "," +
                 getKm() + "," +
                 getFuel() + "," +
-                getDanos() + "," +
                 destinacion + "," +
+                getDanos() + "," +
                 getComents() + "," + "\n";
     }
 
@@ -306,8 +301,8 @@ public class Ingresos extends AppCompatActivity {
 // you will actually use after this query.
         String[] projection = {
                 FeedReaderContract.FeedEntry1.CAMPO2,
-                //FeedReaderContract.FeedEntry1.CAMPO3,
-                //FeedReaderContract.FeedEntry1.CAMPO4
+                FeedReaderContract.FeedEntry1.CAMPO3,
+
         };
 
 // Filter results WHERE "title" = 'My Title'
@@ -325,8 +320,7 @@ public class Ingresos extends AppCompatActivity {
         );
         cursor.moveToFirst();
         numVh = cursor.getString(0);
-        //modeloVh = cursor.getString(1);
-        //claseVh = cursor.getString(2);
+        modeloVh = cursor.getString(1);
         cursor.close();          // Dont forget to close your cursor
         db.close();
 
@@ -366,8 +360,6 @@ public class Ingresos extends AppCompatActivity {
 
     public void ListenerEditTextMatricula(){
         final EditText matricula =findViewById(R.id.nMatricula);
-        final TextView nVehiculo = findViewById(R.id.nVehiculo);
-
         matricula.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -433,12 +425,9 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public String getDanos(){
-        //EditText comentarios = (EditText)findViewById(R.id.etComentarios);
-        //CharSequence danos = "nuevo daño ";
         boolean dañosChecked = ((CheckBox) findViewById(R.id.checkNuevoDaño)).isChecked();
         if (dañosChecked){
-            //comentarios.setText(danos);
-            return "si";
+             return "si";
         }else{
             return "no";
         }
@@ -473,10 +462,8 @@ public class Ingresos extends AppCompatActivity {
                 nContratoET = findViewById(R.id.nContrato),
                 comentariosAdicionalesEt = findViewById(R.id.etComentarios);
         TextView nVehiculo= findViewById(R.id.nVehiculo);
-        CheckBox //sillabebe = findViewById(R.id.checkSillita),
-                transfer = findViewById(R.id.checkTransfer),
-                checkDaños = findViewById(R.id.checkNuevoDaño);
-                //checkGPS = findViewById(R.id.checkGPS);
+        CheckBox transfer = findViewById(R.id.checkTransfer),
+                 checkDaños = findViewById(R.id.checkNuevoDaño);
         Spinner spinnerCombustible = findViewById(R.id.spinnerCombustible);
         spinnerCombustible.setSelection(0,true);
         nMatriculaET.setText("");
@@ -497,7 +484,7 @@ public class Ingresos extends AppCompatActivity {
             public void onClick(View view) {
                 String[] emails = {"chris32p@gmail.com","spbcn61@hertz.com, Checkinhertz.sans@grupounoctc.com"};
                 String subject = "Entradas " + getDay();
-                String bodyText = "Entradas ocurridas el dia " + getDay() +"hasta las: " + getHour();
+                String bodyText = "Entradas ocurridas el dia " + getDay() +" hasta las: " + getHour();
                 Boolean adjunto = true;                                                                             //cambiar por verificacion real
                 sendEmail(emails, subject,bodyText,adjunto);
             }
@@ -547,15 +534,12 @@ public class Ingresos extends AppCompatActivity {
                     "Matricula" + "," +
                     "Numero" + "," +
                     "Modelo" + "," +
-                    //"Grupo" + "," +
                     "Contrato" + "," +
                     "Fecha" + "," +
                     "Hora" + "," +
                     "Kilometros" + "," +
                     "Combustible" + "," +
                     "Daños" + "," +
-                    //"Sillita" + "," +
-                    //"GPS" + "," +
                     "Transfer" + "," +
                     "Comentarios" + "," + "\n";
             if (!root.exists()) {
