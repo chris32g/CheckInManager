@@ -36,27 +36,4 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public String getDay(){
         return new SimpleDateFormat("dd-MM-yyyy").format(new Date(System.currentTimeMillis()));
     }
-
-    public ArrayList llenar_lv(){
-        ArrayList<String> lista = new ArrayList<>();
-        SQLiteDatabase database = this.getWritableDatabase();
-        String q = "select Matricula, modelo, numerovehiculo, numerodecontrato, horaentrada, kilometrosentrada, niveldecombustible, nuevosdaños, comentarios\n" +
-                "from DatosChekins\n" +
-                "where fechaentrada = " + getDay() + ";";
-        Cursor cursor = database.rawQuery(q,null);
-        if(cursor.moveToFirst()){
-            do{
-                lista.add(cursor.getString(0));
-             
-             
-             
-             
-             
-             
-             
-             
-            }while(cursor.moveToNext());
-        }
-        return lista;
-    }
 }
