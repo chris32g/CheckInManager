@@ -29,9 +29,11 @@
 
     <EditText
         android:id="@+id/nKilometros"
-        android:layout_width="272dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:ems="10"
         android:hint="@string/ingreseKilometrosHint"
         android:inputType="number"
@@ -40,8 +42,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/spinnerCombustible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/nMatricula" />
 
     <Button
@@ -119,8 +120,10 @@
     <EditText
         android:id="@+id/nContrato"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="272dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:ems="10"
         android:hint="@string/ingreseContratoHint"
         android:inputType="number"
@@ -135,9 +138,11 @@
 
     <EditText
         android:id="@+id/etComentarios"
-        android:layout_width="248dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:ems="10"
         android:hint="@string/ingreseComentariosHint"
         android:inputType="text|textLongMessage"
@@ -163,16 +168,14 @@
 
     <TextView
         android:id="@+id/fechahora"
-        android:layout_width="320dp"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
         android:layout_marginBottom="7dp"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/checkNuevoDaño"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nContrato" />
 
     <TextView

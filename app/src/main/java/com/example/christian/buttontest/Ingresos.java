@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -134,9 +135,7 @@ public class Ingresos extends AppCompatActivity {
                                         emailIntent.putExtra(Intent.EXTRA_EMAIL, emailsList);
                                         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
                                         emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
-                                        startActivity(Intent.createChooser(emailIntent, "gmail :"));
-                                        getToast("envio de daños exitoso", 0);
-                                    }
+                                        }
                                     blanqueator();
                                 }
                             })
@@ -516,10 +515,8 @@ public class Ingresos extends AppCompatActivity {
                 Uri uri = Uri.fromFile(file);
                 emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
                 startActivity(Intent.createChooser(emailIntent, "gmail :"));
-                getToast("envio exitoso", 0);
            } else if (!adjunto) {
                startActivity(Intent.createChooser(emailIntent, "gmail :"));
-               getToast("envio de daños exitoso", 0);
            } else if (!file.exists()){
                getToast("no se encuentra el archivo", 1);
            }else{getToast("error desconocido", 1);}
@@ -623,6 +620,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     //generador de toast
+
 
     public void getToast(String texto, int num){
         if(num == 0) {
