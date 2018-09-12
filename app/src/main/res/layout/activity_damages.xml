@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.9"
-                android:background="@id/imageView10"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/ic_back" />
 
             <ImageView
@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
-                android:background="@id/imageView10"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/ic_delete" />
         </LinearLayout>
 

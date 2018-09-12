@@ -72,7 +72,7 @@ public class DamagesActivity extends AppCompatActivity {
 
     private void enviarInformeListener(){
         Button enviarInforme = findViewById(R.id.btnEnviarInforme);
-        final String[] emails = new String[] {"chris32p@gmail.com"};
+        final String[] emails = new String[] {"chris32p@gmail.com, gescofet@hertz.com, spbcn61@hertz.com, juan.cano@grupounoctc.com, Checkinhertz.sans@grupounoctc.com"};
         enviarInforme.setOnClickListener(new View.OnClickListener()
                 {
             @Override
