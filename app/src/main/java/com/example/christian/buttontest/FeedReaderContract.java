@@ -47,7 +47,7 @@ public class FeedReaderContract {
 
     public static final String SQL_CREATE_ENTRIES2 =
             "CREATE TABLE " + FeedEntry2.TABLE2_NAME + " (" +
-                    FeedEntry2.CAMPO1 + " TEXT PRIMARY KEY," +
+                    FeedEntry2.CAMPO1 + " TEXT," +
                     FeedEntry2.CAMPO2 + " TEXT," +
                     FeedEntry2.CAMPO3 + " TEXT," +
                     FeedEntry2.CAMPO4 + " INTEGER, " +
@@ -61,7 +61,8 @@ public class FeedReaderContract {
                     FeedEntry2.CAMPO12 + " TEXT," +
                     FeedEntry2.CAMPO13 + " TEXT," +
                     FeedEntry2.CAMPO14 + " TEXT," +
-                    FeedEntry2.CAMPO15 + " TEXT" +");";
+                    FeedEntry2.CAMPO15 + " TEXT, " +
+                    "PRIMARY KEY(Matricula,KilometrosEntrada,FechaEntrada)"+");";
 
 
 

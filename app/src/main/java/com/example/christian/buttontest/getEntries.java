@@ -57,13 +57,13 @@ public class getEntries extends AppCompatActivity {
         FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         String[] projection = {
-                FeedReaderContract.FeedEntry2.CAMPO1,
-                FeedReaderContract.FeedEntry2.CAMPO2,
-                FeedReaderContract.FeedEntry2.CAMPO4,
-                FeedReaderContract.FeedEntry2.CAMPO7,
-                FeedReaderContract.FeedEntry2.CAMPO8,
-                FeedReaderContract.FeedEntry2.CAMPO9,
-                FeedReaderContract.FeedEntry2.CAMPO6
+                FeedReaderContract.FeedEntry2.CAMPO1, //matricula
+                FeedReaderContract.FeedEntry2.CAMPO2, //modelo
+                FeedReaderContract.FeedEntry2.CAMPO4, //numVh
+                FeedReaderContract.FeedEntry2.CAMPO7, //hora
+                FeedReaderContract.FeedEntry2.CAMPO8, //km
+                FeedReaderContract.FeedEntry2.CAMPO9, //combustible
+                FeedReaderContract.FeedEntry2.CAMPO6  //fecha
         };
         String selection = "";//FeedReaderContract.FeedEntry1.CAMPO1 + " = ?";
         String[] selectionArgs = {dia};
@@ -78,15 +78,13 @@ public class getEntries extends AppCompatActivity {
                         FeedReaderContract.FeedEntry2.CAMPO7 + " DESC"          // The sort order
         );
 
-        /*Cursor cursor = database.rawQuery("SELECT matricula, modelo, NumeroVehiculo, NumeroDeContrato," +
-                " HoraEntrada, KilometrosEntrada, NivelDeCombustible, NuevosDaños, Comentarios, FechaEntrada FROM DatosChekins",
-                null, null, FechaEntrada + "DESC");/*" WHERE FechaEntrada = ? ",new String[]{dia});*/
         int cursorLenght = cursor.getCount();
         cursor.moveToFirst();
             for(int i=0; i<cursorLenght;i++)
             {
                 lista.add(cursor.getString(0) +"\n"
-                        + cursor.getString(1)  + "   " + cursor.getString(2) + "    " + cursor.getString(3) + "    " + cursor.getString(4)+ "/8   " + cursor.getString(5)+ "    " +cursor.getString(6));
+                        + "     " + cursor.getString(1)  + "    " + cursor.getString(2) + "    " + cursor.getString(4)+ "   " + cursor.getString(5)+ "/8  "+
+                        "\n" + "     " + cursor.getString(3) +"   "  + cursor.getString(6));
                 cursor.moveToNext();
             }
             cursor.close();

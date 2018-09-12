@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -63,6 +64,7 @@ public class Ingresos extends AppCompatActivity {
         checkTransferListener();
         listenerOnClearButton();
         onUnfocusedTextMatricula();
+        blanqueator();
         hora=getHour();
         setTVHour();
         ListenerEditTextMatricula();
@@ -97,7 +99,6 @@ public class Ingresos extends AppCompatActivity {
                     getToast("Ingrese una matricula para empezar",0);
                 }else if (getKm()< 10 || getKm()>200000) {
                     getToast("Ingrese kilometros del vehiculo", 0);
-
                 }else if (!carExist()){
                     openDialog();
                 }else if(carExist()) {
@@ -130,13 +131,12 @@ public class Ingresos extends AppCompatActivity {
                                         String bodyText = getDay() + " " + hora + "\n"
                                                 + getKm() + " km " + getFuel() + "/8" + "\n"
                                                 + getComents() + "\n" + "firmado";
-                                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                                        emailIntent.setType("text/plain");
-                                        emailIntent.putExtra(Intent.EXTRA_EMAIL, emailsList);
-                                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-                                        emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
-                                        }
-                                    blanqueator();
+                                        Intent intnt = new Intent(Ingresos.this, DamagesActivity.class);
+                                        intnt.putExtra("subject",subject);
+                                        intnt.putExtra("bodyText",bodyText );
+                                        startActivity(intnt);
+                                    }
+                                    handlTimerBlankr();
                                 }
                             })
                             //set negative button
@@ -619,8 +619,18 @@ public class Ingresos extends AppCompatActivity {
         return true;
     }
 
-    //generador de toast
+    public void handlTimerBlankr(){
+        int TIME = 5000; //5000 ms (5 Seconds)
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                blanqueator();
+            }
+        }, TIME);
+    }
+
+    //generador de toast
 
     public void getToast(String texto, int num){
         if(num == 0) {

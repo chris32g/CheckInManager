@@ -7,206 +7,251 @@
     tools:context=".Ingresos"
     tools:layout_editor_absoluteY="73dp">
 
-    <EditText
-        android:id="@+id/nMatricula"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:ems="10"
-        android:hint="@string/ingreseMatriculaHint"
-        android:inputType="text"
-        android:shadowColor="#FFFF00"
-        android:singleLine="false"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/nKilometros"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nVehiculo" />
-
-    <EditText
-        android:id="@+id/nKilometros"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:ems="10"
-        android:hint="@string/ingreseKilometrosHint"
-        android:inputType="number"
-        android:singleLine="false"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerCombustible"
-
-        app:layout_constraintTop_toBottomOf="@+id/nMatricula" />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/buttonCheckCar"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonExport"
-        app:layout_constraintTop_toBottomOf="@+id/etComentarios" />
-
-    <CheckBox
-        android:id="@+id/checkTransfer"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="13dp"
-        android:buttonTint="#F3ED2F"
-        android:gravity="center"
-        android:text="@string/checkTransfer"
-        android:textAlignment="gravity"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBaseline_toBaselineOf="@+id/checkNuevoDaño"
-        app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
-        app:layout_constraintStart_toStartOf="@+id/fechahora" />
-
-    <CheckBox
-        android:id="@+id/checkNuevoDaño"
-        android:layout_width="146dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="16dp"
-        android:buttonTint="#F3ED2F"
-        android:gravity="center"
-        android:text="@string/checkNuevoDano"
-        android:textAlignment="gravity"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/etComentarios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fechahora" />
-
-    <Spinner
-        android:id="@+id/spinnerCombustible"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:entries="@array/SpinnerCombustible"
-        android:gravity="center_horizontal|center"
-        android:spinnerMode="dialog"
-        android:textAlignment="gravity"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/nContrato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/nKilometros" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="@string/textoCombustible"
-        android:textAlignment="center"
-        android:textAppearance="@android:style/TextAppearance"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:typeface="normal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/spinnerCombustible"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerCombustible"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/nContrato"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:ems="10"
-        android:hint="@string/ingreseContratoHint"
-        android:inputType="number"
-        android:maxLength="9"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/fechahora"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCombustible" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/etComentarios"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:ems="10"
-        android:hint="@string/ingreseComentariosHint"
-        android:inputType="text|textLongMessage"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkNuevoDaño" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.93"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="4dp">
 
-    <Button
-        android:id="@+id/buttonExport"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="24dp"
-        android:text="@string/ExportarcsvButton"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSubmit"
-        app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSubmit" />
+            <TextView
+                android:id="@+id/nVehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:hint="@string/numVh"
+                android:textAlignment="gravity"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="31dp" />
 
-    <TextView
-        android:id="@+id/fechahora"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="7dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkNuevoDaño"
-        app:layout_constraintTop_toBottomOf="@+id/nContrato" />
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9" />
 
-    <TextView
-        android:id="@+id/nVehiculo"
-        android:layout_width="173dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="7dp"
-        android:gravity="center"
-        android:hint="@string/numVh"
-        android:textAlignment="gravity"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/nMatricula"
-        app:layout_constraintStart_toStartOf="@+id/nMatricula"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/clearButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_delete"
+                android:tint="#FFFF00"
+                tools:layout_editor_absoluteX="249dp"
+                tools:layout_editor_absoluteY="1dp" />
+        </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/clearButton"
-        android:layout_width="55dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_delete"
-        app:layout_constraintBottom_toTopOf="@+id/nMatricula"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/nVehiculo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <EditText
+            android:id="@+id/nMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:ems="10"
+            android:hint="@string/ingreseMatriculaHint"
+            android:inputType="text"
+            android:shadowColor="#FFFF00"
+            android:singleLine="false"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="68dp" />
+
+        <EditText
+            android:id="@+id/nKilometros"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:ems="10"
+            android:hint="@string/ingreseKilometrosHint"
+            android:inputType="number"
+            android:singleLine="false"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="133dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.578">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:text="@string/textoCombustible"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:typeface="normal"
+                tools:layout_editor_absoluteY="191dp" />
+
+            <Spinner
+                android:id="@+id/spinnerCombustible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:entries="@array/SpinnerCombustible"
+                android:gravity="center_horizontal|center"
+                android:spinnerMode="dialog"
+                android:textAlignment="gravity"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="160dp"
+                tools:layout_editor_absoluteY="179dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/nContrato"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:ems="10"
+            android:hint="@string/ingreseContratoHint"
+            android:inputType="number"
+            android:maxLength="9"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="206dp" />
+
+        <EditText
+            android:id="@+id/etComentarios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:ems="10"
+            android:hint="@string/ingreseComentariosHint"
+            android:inputType="text|textLongMessage"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="347dp" />
+
+        <TextView
+            android:id="@+id/fechahora"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.95"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteY="289dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.93"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="407dp">
+
+            <CheckBox
+                android:id="@+id/checkTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:buttonTint="#F3ED2F"
+                android:gravity="center"
+                android:text="@string/checkTransfer"
+                android:textAlignment="gravity"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="352dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9" />
+
+            <CheckBox
+                android:id="@+id/checkNuevoDaño"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:buttonTint="#F3ED2F"
+                android:gravity="center"
+                android:text="@string/checkNuevoDano"
+                android:textAlignment="gravity"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="158dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0.88"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/buttonExport"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/enviarEmailButton"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="471dp" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/buttonCheckCar"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="480dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

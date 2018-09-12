@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -37,12 +39,8 @@ import java.util.List;
 public class DamagesActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    ImageView imagenCamara;
     int numFoto;
     int totalFotos;
-    Bitmap fotoTest;
-    private File imageFile;
-    File pic;
     private static final int CAMERA_PHOTO = 111;
     private Uri imageToUploadUri;
 
@@ -54,6 +52,7 @@ public class DamagesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_damages);
         Button tomarFotos=findViewById(R.id.btnTomarFotos);
         tomarFotosListener();
+        borrarBtnListener();
         ArrayList<ImageView>imVw=null;
         enviarInformeListener();
         numFoto=0;
@@ -77,46 +76,46 @@ public class DamagesActivity extends AppCompatActivity {
                 {
             @Override
             public void onClick(View view) {
-                sendEmail(emails,"test","archivo de pruebas");
+                String subject = getIntent().getExtras().getString("subject");
+                String bodyText = getIntent().getExtras().getString("bodyText");
+                sendEmail(emails,subject,bodyText);
             }
         });
     }
 
-    private void openCameraIntent() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-
+    private void borrarBtnListener(){
+        ImageButton borrarTodo = findViewById(R.id.btnDelete);
+        borrarTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView imagenCamara0 = findViewById(R.id.imageView1);
+                ImageView imagenCamara1 = findViewById(R.id.imageView2);
+                ImageView imagenCamara2 = findViewById(R.id.imageView3);
+                ImageView imagenCamara3 = findViewById(R.id.imageView4);
+                ImageView imagenCamara4 = findViewById(R.id.imageView5);
+                ImageView imagenCamara5 = findViewById(R.id.imageView6);
+                imagenCamara0.setImageResource(0);
+                imagenCamara1.setImageResource(0);
+                imagenCamara2.setImageResource(0);
+                imagenCamara3.setImageResource(0);
+                imagenCamara4.setImageResource(0);
+                imagenCamara5.setImageResource(0);
+                picsErraser();
+                numFoto=0;
+                totalFotos=0;
+                getToast("Fotos Eliminadas",0);
+            }
+        });
     }
 
-    private void pickPhoto(){
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
-    }
-
-
-    public void sendReport(){
-
-    }
-
-    private File savebitmap(Bitmap bmp) {
-        String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
-        OutputStream outStream = null;
-        File file = new File(extStorageDirectory, "Hertz_temp" + ".png");
-        if (file.exists()) {
-            file.delete();
-            file = new File(extStorageDirectory, "Hertz_temp" + ".png");
-        }
-
-        try {
-            outStream = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, outStream);
-            outStream.flush();
-            outStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return file;
+    public void picsErraser(){
+        for(int j=0; j<6;j++){
+            final String[] nombres = new String[]{"0.png", "1.png","2.png","3.png","4.png","5.png"};
+            File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
+            File fileDelete = new File(root,nombres[j]);
+            if (fileDelete.exists()){
+                fileDelete.delete();
+            }}
     }
 
     private void captureCameraImage() {
@@ -145,17 +144,23 @@ public class DamagesActivity extends AppCompatActivity {
             if (file.exists()) {
                 Uri uri = Uri.fromFile(file);
                 uris.add(uri);}
-       }
+                handlTimer();
+        }
         emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
         startActivity(Intent.createChooser(emailIntent, "gmail :"));
         totalFotos=0;
-        for(int j=0; j<uris.size();j++){
-            File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
-            File fileDelete = new File(root,nombres[j]);
-            if (fileDelete.exists()){
-            fileDelete.delete();
-        }}
+
         }
+       public void handlTimer(){
+           int TIME = 5000; //5000 ms (5 Seconds)
+
+           new Handler().postDelayed(new Runnable() {
+               @Override
+               public void run() {
+                   DamagesActivity.this.finish();
+               }
+           }, TIME);
+       }
 
 
 
