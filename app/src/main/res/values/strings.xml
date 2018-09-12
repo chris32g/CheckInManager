@@ -27,7 +27,7 @@
     <string name="title_activity_check_new_car">CheckNewCar</string>
     <string name="CancelarBt">Cancelar</string>
     <string name="GuardarBt">Guardar</string>
-    <string name="ExportarcsvButton">Exportar CSV</string>
+    <string name="enviarEmailButton">Enviar Email</string>
     <string name="matricula">Matricula</string>
     <string name="modelo">Modelo</string>
     <string name="comentarios">Comentarios</string>
@@ -35,7 +35,8 @@
     <string name="km">Km</string>
     <string name="hora">Hora</string>
     <string name="numero">Numero</string>
-
+    <string name="tomarFotoBtn">Tomar Foto</string>
+    <string name="senddamages">Enviar Daños</string>
 
     //Items del spinner de combustible
     <string-array name="SpinnerCombustible">
@@ -212,5 +213,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+    <string name="title_activity_damages">DamagesActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

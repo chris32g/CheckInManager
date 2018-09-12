@@ -13,7 +13,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,6 +64,7 @@ public class Ingresos extends AppCompatActivity {
         checkTransferListener();
         listenerOnClearButton();
         onUnfocusedTextMatricula();
+        blanqueator();
         hora=getHour();
         setTVHour();
         ListenerEditTextMatricula();
@@ -96,7 +99,6 @@ public class Ingresos extends AppCompatActivity {
                     getToast("Ingrese una matricula para empezar",0);
                 }else if (getKm()< 10 || getKm()>200000) {
                     getToast("Ingrese kilometros del vehiculo", 0);
-
                 }else if (!carExist()){
                     openDialog();
                 }else if(carExist()) {
@@ -129,15 +131,12 @@ public class Ingresos extends AppCompatActivity {
                                         String bodyText = getDay() + " " + hora + "\n"
                                                 + getKm() + " km " + getFuel() + "/8" + "\n"
                                                 + getComents() + "\n" + "firmado";
-                                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                                        emailIntent.setType("text/plain");
-                                        emailIntent.putExtra(Intent.EXTRA_EMAIL, emailsList);
-                                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-                                        emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
-                                        startActivity(Intent.createChooser(emailIntent, "gmail :"));
-                                        getToast("envio de daños exitoso", 0);
+                                        Intent intnt = new Intent(Ingresos.this, DamagesActivity.class);
+                                        intnt.putExtra("subject",subject);
+                                        intnt.putExtra("bodyText",bodyText );
+                                        startActivity(intnt);
                                     }
-                                    blanqueator();
+                                    handlTimerBlankr();
                                 }
                             })
                             //set negative button
@@ -516,10 +515,8 @@ public class Ingresos extends AppCompatActivity {
                 Uri uri = Uri.fromFile(file);
                 emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
                 startActivity(Intent.createChooser(emailIntent, "gmail :"));
-                getToast("envio exitoso", 0);
            } else if (!adjunto) {
                startActivity(Intent.createChooser(emailIntent, "gmail :"));
-               getToast("envio de daños exitoso", 0);
            } else if (!file.exists()){
                getToast("no se encuentra el archivo", 1);
            }else{getToast("error desconocido", 1);}
@@ -620,6 +617,17 @@ public class Ingresos extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public void handlTimerBlankr(){
+        int TIME = 5000; //5000 ms (5 Seconds)
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                blanqueator();
+            }
+        }, TIME);
     }
 
     //generador de toast
