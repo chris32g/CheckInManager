@@ -55,6 +55,7 @@ public class DamagesActivity extends AppCompatActivity {
         borrarBtnListener();
         ArrayList<ImageView>imVw=null;
         enviarInformeListener();
+        backBtnListener();
         numFoto=0;
     }
 
@@ -104,6 +105,17 @@ public class DamagesActivity extends AppCompatActivity {
                 numFoto=0;
                 totalFotos=0;
                 getToast("Fotos Eliminadas",0);
+            }
+        });
+    }
+
+    private void backBtnListener(){
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                picsErraser();
+                DamagesActivity.this.finish();
             }
         });
     }
