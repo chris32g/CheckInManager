@@ -30,6 +30,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
@@ -53,6 +54,7 @@ public class Ingresos extends AppCompatActivity {
     public String emails = "chris32p@gmail.com, gescofet@hertz.com, spbcn61@hertz.com, juan.cano@grupounoctc.com, Checkinhertz.sans@grupounoctc.com";
     public String[] emailsList = emails.split(",");
     public static Boolean returnedDialog;
+//    public TextView nVehiculo = findViewById(R.id.nVehiculo);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -62,7 +64,6 @@ public class Ingresos extends AppCompatActivity {
         setContentView(R.layout.ingresos);
         getMatricula();
         addListenerOnButton();
-        listenerOnBackButton();
         listenerOnSecondButton();
         checkTransferListener();
         listenerOnClearButton();
@@ -130,6 +131,7 @@ public class Ingresos extends AppCompatActivity {
                                         generateTransfer(Ingresos.this, "transfers " + getDay() +".csv", getTransferData());
                                     }
                                     if (getDanos().equals("si")) {
+                                        picsErraser();
                                         String subject = "parte " + getMatricula();
                                         String bodyText = getDay() + " " + hora + "\n"
                                                 + getKm() + " km " + getFuel() + "/8" + "\n"
@@ -137,9 +139,9 @@ public class Ingresos extends AppCompatActivity {
                                         Intent intnt = new Intent(Ingresos.this, DamagesActivity.class);
                                         intnt.putExtra("subject",subject);
                                         intnt.putExtra("bodyText",bodyText );
+                                        handlTimerBlankr();
                                         startActivity(intnt);
-                                    }
-                                    handlTimerBlankr();
+                                    } else { blanqueator();}
                                 }
                             })
                             //set negative button
@@ -159,21 +161,8 @@ public class Ingresos extends AppCompatActivity {
             }
         });
     }
-
-<<<<<<< Updated upstream
-=======
-    public void listenerOnBackButton() {
-        ImageButton backButton = findViewById(R.id.volverBtn);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Ingresos.this.finish();
-            }
-        });
-    }
-
->>>>>>> Stashed changes
     public void openDialog(){
+
             Bundle bundle1 = new Bundle();
             bundle1.putString("textoMatricula",getMatricula());
             DialogAddVh dialogoDatos = new DialogAddVh();
@@ -231,7 +220,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public void checkTransferListener(){
-        CheckBox checkTransfer = findViewById(R.id.checkTransfer);
+        Switch checkTransfer = findViewById(R.id.checkTransfer);
         checkTransfer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -289,7 +278,6 @@ public class Ingresos extends AppCompatActivity {
                 hora + "," +
                 getKm() + "," +
                 getFuel() + "," +
-                getDanos() + "," +
                 getTransfer() + "," +
                 getComents() + "," + "\n";
             }
@@ -385,6 +373,7 @@ public class Ingresos extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
               hora=getHour();
               setTVHour();
             }
@@ -416,7 +405,7 @@ public class Ingresos extends AppCompatActivity {
 
     public void setTVHour(){
         final TextView horaTV =  findViewById(R.id.fechahora);
-        String textHora = getDay()+ " " + hora;
+        String textHora = hora + " " + getDay();
         horaTV.setText(textHora);
         horaTV.postInvalidate();
     }
@@ -438,7 +427,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public String getDanos(){
-        boolean dañosChecked = ((CheckBox) findViewById(R.id.checkNuevoDaño)).isChecked();
+        boolean dañosChecked = ((Switch) findViewById(R.id.checkNuevoDaño)).isChecked();
         if (dañosChecked){
              return "si";
         }else{
@@ -447,7 +436,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public String getTransfer(){
-        boolean dañosChecked = ((CheckBox) findViewById(R.id.checkTransfer)).isChecked();
+        boolean dañosChecked = ((Switch) findViewById(R.id.checkTransfer)).isChecked();
         if (dañosChecked){
             return "si";
         }else{
@@ -475,8 +464,8 @@ public class Ingresos extends AppCompatActivity {
                 nContratoET = findViewById(R.id.nContrato),
                 comentariosAdicionalesEt = findViewById(R.id.etComentarios);
         TextView nVehiculo= findViewById(R.id.nVehiculo);
-        CheckBox transfer = findViewById(R.id.checkTransfer),
-                 checkDaños = findViewById(R.id.checkNuevoDaño);
+        Switch transfer = findViewById(R.id.checkTransfer),
+               checkDaños = findViewById(R.id.checkNuevoDaño);
         Spinner spinnerCombustible = findViewById(R.id.spinnerCombustible);
         spinnerCombustible.setSelection(0,true);
         nMatriculaET.setText("");
@@ -551,7 +540,6 @@ public class Ingresos extends AppCompatActivity {
                     "Kilometros" + "," +
                     "Combustible" + "," +
                     "Daños" + "," +
-                    "Transfer" + "," +
                     "Comentarios" + "," + "\n";
             if (!root.exists()) {
                 root.mkdirs();
@@ -580,15 +568,13 @@ public class Ingresos extends AppCompatActivity {
                     "SEP=," + "\n" +
                     "Matricula" + "," +
                     "Numero" + "," +
-                    "Modelo" + "," +
-                   // "Grupo" + "," +
                     "Contrato" + "," +
                     "Fecha" + "," +
                     "Hora" + "," +
                     "Kilometros" + "," +
                     "Combustible" + "," +
-                    "Daños" + "," +
                     "Destino" + "," +
+                    "Daños" + "," +
                     "Comentarios" + "," + "\n";
             if (!root.exists()) {
                 root.mkdirs();
@@ -642,6 +628,16 @@ public class Ingresos extends AppCompatActivity {
                 blanqueator();
             }
         }, TIME);
+    }
+
+    public void picsErraser(){
+        for(int j=0; j<6;j++){
+            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
+            File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
+            File fileDelete = new File(root,nombres[j]);
+            if (fileDelete.exists()){
+                fileDelete.delete();
+            }}
     }
 
     //generador de toast
