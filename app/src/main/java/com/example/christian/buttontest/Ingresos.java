@@ -66,6 +66,7 @@ public class Ingresos extends AppCompatActivity {
         addListenerOnButton();
         listenerOnSecondButton();
         checkTransferListener();
+        listenerOnBackButton();
         listenerOnClearButton();
         onUnfocusedTextMatricula();
         blanqueator();
@@ -161,6 +162,17 @@ public class Ingresos extends AppCompatActivity {
             }
         });
     }
+
+    public void listenerOnBackButton(){
+        ImageButton backBtn = findViewById(R.id.volverBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ingresos.this.finish();
+            }
+        });
+    }
+
     public void openDialog(){
 
             Bundle bundle1 = new Bundle();
