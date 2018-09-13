@@ -50,10 +50,8 @@ public class DamagesActivity extends AppCompatActivity {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         setContentView(R.layout.activity_damages);
-        Button tomarFotos=findViewById(R.id.btnTomarFotos);
         tomarFotosListener();
         borrarBtnListener();
-        ArrayList<ImageView>imVw=null;
         enviarInformeListener();
         backBtnListener();
         numFoto=0;
@@ -122,7 +120,7 @@ public class DamagesActivity extends AppCompatActivity {
 
     public void picsErraser(){
         for(int j=0; j<6;j++){
-            final String[] nombres = new String[]{"0.png", "1.png","2.png","3.png","4.png","5.png"};
+            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File fileDelete = new File(root,nombres[j]);
             if (fileDelete.exists()){
@@ -135,7 +133,7 @@ public class DamagesActivity extends AppCompatActivity {
         File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
         if (!root.exists()) {
             root.mkdirs();}
-        File f = new File(root, numFoto + ".png");
+        File f = new File(root, numFoto + ".jpg");
         chooserIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
         imageToUploadUri = Uri.fromFile(f);
         startActivityForResult(chooserIntent, CAMERA_PHOTO);
@@ -149,7 +147,7 @@ public class DamagesActivity extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         ArrayList<Uri> uris = new ArrayList<>();
-        String[] nombres = new String[]{"0.png", "1.png","2.png","3.png","4.png","5.png"};
+        String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
         for (int i=0; i<totalFotos+1;i++) {
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File file = new File(root, nombres[i]);
