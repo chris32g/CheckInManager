@@ -8,6 +8,7 @@
     tools:layout_editor_absoluteY="73dp">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
@@ -16,8 +17,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,6 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:background="@android:color/transparent"
+                android:contentDescription="TODO"
                 android:src="@drawable/ic_delete"
                 android:tint="#FFFF00"
                 tools:layout_editor_absoluteX="249dp"
@@ -135,6 +139,44 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/fechahora"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.95"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteY="289dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.93"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/checkTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:buttonTint="#FFF600"
+                android:checked="false"
+                android:foregroundTint="#FFF600"
+                android:text="@string/buttonCheckTransfer"
+                android:thumbTint="#FFF600" />
+
+            <Switch
+                android:id="@+id/checkNuevoDaño"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/checkNuevoDano"
+                android:thumbTint="#FFF600" />
+
+        </LinearLayout>
+
         <EditText
             android:id="@+id/nContrato"
             style="@style/Widget.AppCompat.AutoCompleteTextView"
@@ -166,61 +208,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="347dp" />
-
-        <TextView
-            android:id="@+id/fechahora"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.95"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteY="289dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.93"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="407dp">
-
-            <CheckBox
-                android:id="@+id/checkTransfer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:buttonTint="#F3ED2F"
-                android:gravity="center"
-                android:text="@string/checkTransfer"
-                android:textAlignment="gravity"
-                android:textColor="#FFFFFF"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="352dp" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9" />
-
-            <CheckBox
-                android:id="@+id/checkNuevoDaño"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:buttonTint="#F3ED2F"
-                android:gravity="center"
-                android:text="@string/checkNuevoDano"
-                android:textAlignment="gravity"
-                android:textColor="#FFFFFF"
-                tools:layout_editor_absoluteX="158dp"
-                tools:layout_editor_absoluteY="354dp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

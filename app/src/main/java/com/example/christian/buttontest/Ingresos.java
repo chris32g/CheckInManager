@@ -30,6 +30,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
@@ -137,9 +138,11 @@ public class Ingresos extends AppCompatActivity {
                                         Intent intnt = new Intent(Ingresos.this, DamagesActivity.class);
                                         intnt.putExtra("subject",subject);
                                         intnt.putExtra("bodyText",bodyText );
+                                        handlTimerBlankr();
                                         startActivity(intnt);
-                                    }
-                                    handlTimerBlankr();
+                                    } else { blanqueator();}
+
+
                                 }
                             })
                             //set negative button
@@ -219,7 +222,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public void checkTransferListener(){
-        CheckBox checkTransfer = findViewById(R.id.checkTransfer);
+        Switch checkTransfer = findViewById(R.id.checkTransfer);
         checkTransfer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -427,7 +430,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public String getDanos(){
-        boolean dañosChecked = ((CheckBox) findViewById(R.id.checkNuevoDaño)).isChecked();
+        boolean dañosChecked = ((Switch) findViewById(R.id.checkNuevoDaño)).isChecked();
         if (dañosChecked){
              return "si";
         }else{
@@ -436,7 +439,7 @@ public class Ingresos extends AppCompatActivity {
     }
 
     public String getTransfer(){
-        boolean dañosChecked = ((CheckBox) findViewById(R.id.checkTransfer)).isChecked();
+        boolean dañosChecked = ((Switch) findViewById(R.id.checkTransfer)).isChecked();
         if (dañosChecked){
             return "si";
         }else{
@@ -464,8 +467,8 @@ public class Ingresos extends AppCompatActivity {
                 nContratoET = findViewById(R.id.nContrato),
                 comentariosAdicionalesEt = findViewById(R.id.etComentarios);
         TextView nVehiculo= findViewById(R.id.nVehiculo);
-        CheckBox transfer = findViewById(R.id.checkTransfer),
-                 checkDaños = findViewById(R.id.checkNuevoDaño);
+        Switch transfer = findViewById(R.id.checkTransfer),
+               checkDaños = findViewById(R.id.checkNuevoDaño);
         Spinner spinnerCombustible = findViewById(R.id.spinnerCombustible);
         spinnerCombustible.setSelection(0,true);
         nMatriculaET.setText("");
