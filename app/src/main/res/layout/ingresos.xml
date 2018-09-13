@@ -170,19 +170,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:buttonTint="#FFF600"
                 android:checked="false"
-                android:foregroundTint="#FFF600"
-                android:text="@string/buttonCheckTransfer"
-                android:thumbTint="#FFF600" />
+                android:text="@string/buttonCheckTransfer" />
 
             <Switch
                 android:id="@+id/checkNuevoDaño"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/checkNuevoDano"
-                android:thumbTint="#FFF600" />
+
+                android:text="@string/checkNuevoDano" />
 
         </LinearLayout>
 

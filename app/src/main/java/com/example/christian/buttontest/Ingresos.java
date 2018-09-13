@@ -302,8 +302,8 @@ public class Ingresos extends AppCompatActivity {
                 getDay() + " " +
                 getHour() + "," +
                 getKm() + "," +
-                getFuel() + "," +
                 destinacion + "," +
+                getFuel() + "," +
                 getDanos() + "," +
                 getComents() + "," + "\n";
     }
@@ -584,8 +584,8 @@ public class Ingresos extends AppCompatActivity {
                     "Fecha" + "," +
                     "Hora" + "," +
                     "Kilometros" + "," +
-                    "Combustible" + "," +
                     "Destino" + "," +
+                    "Combustible" + "," +
                     "Daños" + "," +
                     "Comentarios" + "," + "\n";
             if (!root.exists()) {
