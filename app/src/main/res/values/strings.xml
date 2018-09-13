@@ -10,7 +10,7 @@
     <string name="action_settings">Settings</string>
     <string name="buttonSearchCar">Buscar Coche</string>
     <string name="buttonCheckCar">Ingresar Coche</string>
-    <string name="buttonCheckTransfer">Ingresar Transfer</string>
+    <string name="buttonCheckTransfer">Transfer</string>
     <string name="ingresevhNumHint">Escriba el Numero de Vehículo</string>
     <string name="ingreseModeloVhHint">Escriba el Modelo del Vehículo</string>
     <string name="ingreseClaseVhHint">Escriba la Clase del Vehículo</string>
