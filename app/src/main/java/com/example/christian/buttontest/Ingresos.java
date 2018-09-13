@@ -53,7 +53,6 @@ public class Ingresos extends AppCompatActivity {
     public String emails = "chris32p@gmail.com, gescofet@hertz.com, spbcn61@hertz.com, juan.cano@grupounoctc.com, Checkinhertz.sans@grupounoctc.com";
     public String[] emailsList = emails.split(",");
     public static Boolean returnedDialog;
-//    public TextView nVehiculo = findViewById(R.id.nVehiculo);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,6 +62,7 @@ public class Ingresos extends AppCompatActivity {
         setContentView(R.layout.ingresos);
         getMatricula();
         addListenerOnButton();
+        listenerOnBackButton();
         listenerOnSecondButton();
         checkTransferListener();
         listenerOnClearButton();
@@ -160,8 +160,20 @@ public class Ingresos extends AppCompatActivity {
         });
     }
 
-    public void openDialog(){
+<<<<<<< Updated upstream
+=======
+    public void listenerOnBackButton() {
+        ImageButton backButton = findViewById(R.id.volverBtn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ingresos.this.finish();
+            }
+        });
+    }
 
+>>>>>>> Stashed changes
+    public void openDialog(){
             Bundle bundle1 = new Bundle();
             bundle1.putString("textoMatricula",getMatricula());
             DialogAddVh dialogoDatos = new DialogAddVh();
@@ -373,7 +385,6 @@ public class Ingresos extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
               hora=getHour();
               setTVHour();
             }
@@ -405,7 +416,7 @@ public class Ingresos extends AppCompatActivity {
 
     public void setTVHour(){
         final TextView horaTV =  findViewById(R.id.fechahora);
-        String textHora = hora + " " + getDay();
+        String textHora = getDay()+ " " + hora;
         horaTV.setText(textHora);
         horaTV.postInvalidate();
     }

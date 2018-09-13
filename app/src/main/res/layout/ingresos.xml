@@ -28,6 +28,14 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="4dp">
 
+            <ImageButton
+                android:id="@+id/volverBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_back" />
+
             <TextView
                 android:id="@+id/nVehiculo"
                 android:layout_width="match_parent"
