@@ -131,6 +131,7 @@ public class Ingresos extends AppCompatActivity {
                                         generateTransfer(Ingresos.this, "transfers " + getDay() +".csv", getTransferData());
                                     }
                                     if (getDanos().equals("si")) {
+                                        picsErraser();
                                         String subject = "parte " + getMatricula();
                                         String bodyText = getDay() + " " + hora + "\n"
                                                 + getKm() + " km " + getFuel() + "/8" + "\n"
@@ -141,8 +142,6 @@ public class Ingresos extends AppCompatActivity {
                                         handlTimerBlankr();
                                         startActivity(intnt);
                                     } else { blanqueator();}
-
-
                                 }
                             })
                             //set negative button
@@ -162,7 +161,6 @@ public class Ingresos extends AppCompatActivity {
             }
         });
     }
-
     public void openDialog(){
 
             Bundle bundle1 = new Bundle();
@@ -280,7 +278,6 @@ public class Ingresos extends AppCompatActivity {
                 hora + "," +
                 getKm() + "," +
                 getFuel() + "," +
-                getDanos() + "," +
                 getTransfer() + "," +
                 getComents() + "," + "\n";
             }
@@ -543,7 +540,6 @@ public class Ingresos extends AppCompatActivity {
                     "Kilometros" + "," +
                     "Combustible" + "," +
                     "Daños" + "," +
-                    "Transfer" + "," +
                     "Comentarios" + "," + "\n";
             if (!root.exists()) {
                 root.mkdirs();
@@ -572,15 +568,13 @@ public class Ingresos extends AppCompatActivity {
                     "SEP=," + "\n" +
                     "Matricula" + "," +
                     "Numero" + "," +
-                    "Modelo" + "," +
-                   // "Grupo" + "," +
                     "Contrato" + "," +
                     "Fecha" + "," +
                     "Hora" + "," +
                     "Kilometros" + "," +
                     "Combustible" + "," +
-                    "Daños" + "," +
                     "Destino" + "," +
+                    "Daños" + "," +
                     "Comentarios" + "," + "\n";
             if (!root.exists()) {
                 root.mkdirs();
@@ -634,6 +628,16 @@ public class Ingresos extends AppCompatActivity {
                 blanqueator();
             }
         }, TIME);
+    }
+
+    public void picsErraser(){
+        for(int j=0; j<6;j++){
+            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
+            File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
+            File fileDelete = new File(root,nombres[j]);
+            if (fileDelete.exists()){
+                fileDelete.delete();
+            }}
     }
 
     //generador de toast
