@@ -76,7 +76,6 @@ public class Ingresos extends AppCompatActivity {
         addListenerOnSpinnerItemSelection();
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-
         }
 
     FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(Ingresos.this);
@@ -271,7 +270,7 @@ public class Ingresos extends AppCompatActivity {
         alertDialog.setNegativeButton("Cancelar",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        CheckBox checkTransfer = findViewById(R.id.checkTransfer);
+                        Switch checkTransfer = findViewById(R.id.checkTransfer);
                         checkTransfer.setChecked(false);
                         dialog.cancel();
                     }
