@@ -139,7 +139,7 @@ public void inflateList(){
             for(int i=0; i<cursorLenght;i++)
             {
                 lista.add(cursor.getString(0) +"\n"
-                        + "     " + cursor.getString(1)  + "    " + cursor.getString(2) + "    " + cursor.getString(4)+ "   " + cursor.getString(5)+ "/8  "+
+                        + "     " + cursor.getString(1)  + "    " + cursor.getString(2) + "    " + cursor.getString(4)+ " km  " + cursor.getString(5)+ "/8  "+
                         "\n" + "     " + cursor.getString(3) +"   "  + cursor.getString(6));
                 cursor.moveToNext();
             }
