@@ -1,5 +1,6 @@
 package com.example.christian.buttontest;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Time;
@@ -24,12 +26,15 @@ import java.util.Date;
 public class DialogAddVh extends AppCompatDialogFragment {
     public Button boton1;
     public String textoMatricula;
+    public String from;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.addvhtodb, null);
+
+        from = this.getArguments().getString("from");
         final EditText edtNumVh = view.findViewById(R.id.vhNumFsDialog);
         final EditText edtModeloVh = view.findViewById(R.id.modelVhFsDialog);
 

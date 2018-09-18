@@ -69,6 +69,7 @@ public class Ingresos extends AppCompatActivity {
         listenerOnBackButton();
         listenerOnClearButton();
         onUnfocusedTextMatricula();
+        ListenerEditTextkm();
         blanqueator();
         hora=getHour();
         setTVHour();
@@ -176,6 +177,7 @@ public class Ingresos extends AppCompatActivity {
 
             Bundle bundle1 = new Bundle();
             bundle1.putString("textoMatricula",getMatricula());
+            bundle1.putString("from", "Ingresos");
             DialogAddVh dialogoDatos = new DialogAddVh();
             dialogoDatos.setArguments(bundle1);
             dialogoDatos.show(getSupportFragmentManager(), "Introduzca Nuevo Vehiculo");
@@ -315,13 +317,11 @@ public class Ingresos extends AppCompatActivity {
         String[] projection = {
                 FeedReaderContract.FeedEntry1.CAMPO2,
                 FeedReaderContract.FeedEntry1.CAMPO3,
-
         };
 
 // Filter results WHERE "title" = 'My Title'
         String selection = FeedReaderContract.FeedEntry1.CAMPO1 + " = ?";
         String[] selectionArgs = {getMatricula()};
-
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry1.TABLE1_NAME,   // The table to query
                 projection,             // The array of columns to return (pass null to get all)
@@ -336,7 +336,6 @@ public class Ingresos extends AppCompatActivity {
         modeloVh = cursor.getString(1);
         cursor.close();          // Dont forget to close your cursor
         db.close();
-
     }
 
     public int getContractNumber(){
@@ -353,11 +352,6 @@ public class Ingresos extends AppCompatActivity {
 
     public String getHour(){
         return new SimpleDateFormat("kk:mm").format(new Date(System.currentTimeMillis()));
-    }
-
-    public String getNumVehiculo(){
-        TextView nVehiculo = findViewById(R.id.nVehiculo);
-    return nVehiculo.getText().toString().trim();
     }
 
     public String getDay(){
@@ -387,6 +381,31 @@ public class Ingresos extends AppCompatActivity {
 
               hora=getHour();
               setTVHour();
+            }
+        });
+    }
+
+    public void ListenerEditTextkm(){
+        final EditText km =findViewById(R.id.nKilometros);
+        final TextView numvh = findViewById(R.id.nVehiculo);
+        km.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(km.length()>2) {
+                    getCarInfo();
+                    numvh.setText(numVh);
+                }
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
     }

@@ -8,6 +8,7 @@ package com.example.christian.buttontest;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.ImageButton;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         onclickSearchEntry();
         onclickTransfer();
         picsErraser();
+        onclickSettings();
         ButonInsertNewArrive = findViewById(R.id.ButonInsertNewArrive);
         ButonInsertNewArrive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +64,18 @@ public class MainActivity extends AppCompatActivity {
         ButtonSetTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, DamagesActivity.class);
+                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+
+    public void onclickSettings() {
+        ImageButton ButtonSettings = findViewById(R.id.settingsButton);
+        ButtonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ConfigActivity.class);
                 startActivity(i);
             }
         });
