@@ -7,17 +7,20 @@
     tools:context=".Config">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:stretchColumns="*"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="0dp">
 
         <ImageButton
-            android:id="@+id/volverBtn2"
+            android:id="@+id/volverBtn"
             android:layout_width="55dp"
             android:layout_height="32dp"
+            android:layout_marginTop="16dp"
             android:layout_weight="0.2"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/ic_back" />
@@ -26,10 +29,10 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:text="Seleccione lista de emails"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
@@ -37,86 +40,65 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent "
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="8dp">
 
-        <TableRow
+        <Button
+            android:id="@+id/buttonReporteDanos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="fill_vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_danos2"
+            android:drawablePadding="6dp"
+            android:text="Reporte de Daños"
+            android:textAlignment="textStart"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="335dp" />
 
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/ic_listaingresos" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:baselineAligned="false"
-                android:text="Lista de Ingresos"
-                android:textAlignment="viewStart"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="60dp" />
-
-        </TableRow>
-
-        <TableRow
+        <Button
+            android:id="@+id/buttonListaDeLlaves"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="fill_vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_llaves"
+            android:drawablePadding="6dp"
+            android:text="Lista de Llaves"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="63dp" />
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/ic_danos" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="282dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
-                android:background="@android:color/transparent"
-                android:text="Reportes de daños"
-                android:textAlignment="viewStart" />
-        </TableRow>
-
-        <TableRow
+        <Button
+            android:id="@+id/buttonTransfers"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="fill_vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_transfers"
+            android:drawablePadding="6dp"
+            android:text="Transfers"
+            android:textAlignment="textStart"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="404dp" />
 
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/ic_transfers" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
-                android:background="@android:color/transparent"
-                android:text="Transfers"
-                android:textAlignment="viewStart" />
-        </TableRow>
-
-    </TableLayout>
+        <Button
+            android:id="@+id/buttonListaDeIngresos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_listaingresos"
+            android:drawablePadding="6dp"
+            android:text="Lista de Ingresos"
+            android:textAlignment="textStart"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="267dp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

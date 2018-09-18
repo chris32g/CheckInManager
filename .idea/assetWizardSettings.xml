@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/D:/Programs%20Files/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_playlist_add_check_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/D:/Programs%20Files/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_vpn_key_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -44,9 +44,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="IMAGE" />
                                       <entry key="imageAsset" value="D:\ProyectosAndroid\buttontest\app\src\main\res\drawable\car-crash-solid.png" />
-                                      <entry key="outputName" value="ic_daños" />
+                                      <entry key="outputName" value="ic_llaves" />
                                       <entry key="theme" value="HOLO_DARK" />
                                     </map>
                                   </option>

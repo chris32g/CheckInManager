@@ -33,7 +33,7 @@
             android:name=".DamagesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ConfigActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".EmailList"></activity>
     </application>

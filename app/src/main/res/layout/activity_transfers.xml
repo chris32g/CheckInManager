@@ -43,8 +43,8 @@
         android:layout_height="56dp"
         android:onClick="onClick"
         android:text="@string/buttonCheckTransfer"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="461dp" />
+        tools:layout_editor_absoluteX="215dp"
+        tools:layout_editor_absoluteY="581dp" />
 
     <CheckBox
         android:id="@+id/checkNuevoDaño"
@@ -75,7 +75,7 @@
         android:id="@+id/textView"
         android:layout_width="127dp"
         android:layout_height="47dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="48dp"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
         android:text="@string/textoCombustible"
@@ -86,7 +86,8 @@
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.573" />
 
     <EditText
         android:id="@+id/nContrato"
@@ -117,16 +118,17 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="404dp" />
+        tools:layout_editor_absoluteY="509dp" />
 
     <Button
         android:id="@+id/buttonExport"
         android:layout_width="128dp"
         android:layout_height="56dp"
         android:text="Exportar CSV"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="461dp" />
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="581dp" />
 
     <EditText
         android:id="@+id/editText3"
@@ -165,8 +167,8 @@
         android:layout_height="41dp"
         android:hint="Destino"
         android:textAlignment="center"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="299dp"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="438dp"
         tools:text="Destino" />
 
 </android.support.constraint.ConstraintLayout>
