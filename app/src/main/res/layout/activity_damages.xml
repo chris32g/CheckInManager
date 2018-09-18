@@ -21,19 +21,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.71"
+            android:layout_weight="0.95"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.9"
+                android:layout_weight="0.7"
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/ic_back" />
 
-            <ImageView
-                android:id="@+id/imageView11"
+            <Space
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.7" />
@@ -44,138 +43,158 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:background="@android:color/transparent"
+                android:tint="#FFFF00"
                 app:srcCompat="@drawable/ic_delete" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayouttop"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.2">
 
-            android:layout_marginTop="8dp"
-            android:layout_weight="0.5"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/space3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.02" />
+                <LinearLayout
+                    android:id="@+id/linearLayouttop"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView1"
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.66" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/Space1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.05" />
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.66" />
+                </LinearLayout>
 
-            <ImageView
-                android:id="@+id/Space2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.05" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.66" />
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/space4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.02" />
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.82" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
 
-            android:layout_weight="0.5"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="170dp">
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/space5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.02" />
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.66" />
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/space"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.05" />
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.66" />
+                </LinearLayout>
 
-            <ImageView
-                android:id="@+id/space2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.05" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.66" />
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/space6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.02" />
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
 
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.82" />
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.66"
+                        android:padding="4dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"
-            android:layout_weight="0.67"
+            android:layout_weight="0.90"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
