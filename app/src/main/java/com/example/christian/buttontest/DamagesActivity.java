@@ -93,12 +93,24 @@ public class DamagesActivity extends AppCompatActivity {
                 ImageView imagenCamara3 = findViewById(R.id.imageView4);
                 ImageView imagenCamara4 = findViewById(R.id.imageView5);
                 ImageView imagenCamara5 = findViewById(R.id.imageView6);
+                ImageView imagenCamara6 = findViewById(R.id.imageView7);
+                ImageView imagenCamara7 = findViewById(R.id.imageView8);
+                ImageView imagenCamara8 = findViewById(R.id.imageView9);
+                ImageView imagenCamara9 = findViewById(R.id.imageView10);
+                ImageView imagenCamara10 = findViewById(R.id.imageView11);
+                ImageView imagenCamara11 = findViewById(R.id.imageView12);
                 imagenCamara0.setImageResource(0);
                 imagenCamara1.setImageResource(0);
                 imagenCamara2.setImageResource(0);
                 imagenCamara3.setImageResource(0);
                 imagenCamara4.setImageResource(0);
                 imagenCamara5.setImageResource(0);
+                imagenCamara6.setImageResource(0);
+                imagenCamara7.setImageResource(0);
+                imagenCamara8.setImageResource(0);
+                imagenCamara9.setImageResource(0);
+                imagenCamara10.setImageResource(0);
+                imagenCamara11.setImageResource(0);
                 picsErraser();
                 numFoto=0;
                 totalFotos=0;
@@ -120,7 +132,7 @@ public class DamagesActivity extends AppCompatActivity {
 
     public void picsErraser(){
         for(int j=0; j<6;j++){
-            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
+            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg"};
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File fileDelete = new File(root,nombres[j]);
             if (fileDelete.exists()){
@@ -147,7 +159,7 @@ public class DamagesActivity extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         ArrayList<Uri> uris = new ArrayList<>();
-        String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
+        String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg"};
         for (int i=0; i<totalFotos+1;i++) {
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File file = new File(root, nombres[i]);
@@ -183,21 +195,31 @@ public class DamagesActivity extends AppCompatActivity {
         ImageView imagenCamara3 = findViewById(R.id.imageView4);
         ImageView imagenCamara4 = findViewById(R.id.imageView5);
         ImageView imagenCamara5 = findViewById(R.id.imageView6);
+        ImageView imagenCamara6 = findViewById(R.id.imageView7);
+        ImageView imagenCamara7 = findViewById(R.id.imageView8);
+        ImageView imagenCamara8 = findViewById(R.id.imageView9);
+        ImageView imagenCamara9 = findViewById(R.id.imageView10);
+        ImageView imagenCamara10 = findViewById(R.id.imageView11);
+        ImageView imagenCamara11 = findViewById(R.id.imageView12);
         ImageView[] imagesViews = new ImageView[]{
                 imagenCamara0,
                 imagenCamara1,
                 imagenCamara2,
                 imagenCamara3,
                 imagenCamara4,
-                imagenCamara5};
+                imagenCamara5,
+                imagenCamara6,
+                imagenCamara7,
+                imagenCamara8,
+                imagenCamara9,
+                imagenCamara10,
+                imagenCamara11};
         if (requestCode == CAMERA_PHOTO && resultCode == Activity.RESULT_OK) {
             if(imageToUploadUri != null){
-                Uri selectedImage = imageToUploadUri;
-//                getContentResolver().notifyChange(selectedImage, null);
                 Bitmap reducedSizeBitmap = getBitmap(imageToUploadUri.getPath());
                 if(reducedSizeBitmap != null){
                     imagesViews[numFoto].setImageBitmap(reducedSizeBitmap);
-                    if (numFoto<5) {
+                    if (numFoto<12) {
                         totalFotos = numFoto + 1;
                         ++numFoto;
                     }else{

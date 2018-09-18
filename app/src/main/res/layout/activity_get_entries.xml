@@ -15,13 +15,13 @@
         android:queryHint="Buscar..."
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
         app:layout_constraintTop_toTopOf="parent">
 
     </SearchView>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/backBtn"
         android:layout_width="67dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

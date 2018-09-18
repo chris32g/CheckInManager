@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -46,6 +47,7 @@ public class getEntries extends AppCompatActivity {
         actionBar.hide();
         setContentView(R.layout.activity_get_entries);
         longClickListener();
+        backBtnListener();
         listViewCoches = findViewById(R.id.listView);
         SearchView buscador = findViewById(R.id.searchView);
         FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getEntries.this);
@@ -198,6 +200,16 @@ public void inflateList(){
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void backBtnListener(){
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                  getEntries.this.finish();
+            }
+        });
     }
 
     public void getDestinyAlert() {

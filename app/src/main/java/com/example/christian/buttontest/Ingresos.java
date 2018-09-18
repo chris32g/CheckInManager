@@ -662,7 +662,7 @@ public class Ingresos extends AppCompatActivity {
 
     public void picsErraser(){
         for(int j=0; j<6;j++){
-            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"};
+            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg"};
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File fileDelete = new File(root,nombres[j]);
             if (fileDelete.exists()){
