@@ -35,7 +35,12 @@
         <activity
             android:name=".ConfigActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".EmailList"></activity>
+        <activity
+            android:name=".EmailList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListaLlavesSubidas"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

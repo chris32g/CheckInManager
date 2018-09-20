@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchViewSubidas"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:queryHint="Buscar..."
@@ -26,9 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:backgroundTint="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/searchView"
+        app:layout_constraintEnd_toStartOf="@+id/searchViewSubidas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchViewSubidas"
         app:srcCompat="@drawable/ic_back" />
 
     <ListView
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchViewSubidas" />
 
 
 </android.support.constraint.ConstraintLayout>

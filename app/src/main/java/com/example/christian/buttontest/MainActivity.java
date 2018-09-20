@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         ButtonSetTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, DamagesActivity.class);
+                Intent i = new Intent(MainActivity.this, ListaLlavesSubidas.class);
                 startActivity(i);
             }
         });
