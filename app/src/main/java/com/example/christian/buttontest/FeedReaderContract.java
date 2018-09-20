@@ -38,6 +38,14 @@ public class FeedReaderContract {
         public static final String CAMPO14 = "Destino";
         public static final String CAMPO15 = "Comentarios";
         }
+    public static class ListaSubidas implements BaseColumns {
+        public static final String TABLE_S_NAME = "LlavesSubidas";
+        public static final String CAMPO1 = "Matricula";
+        public static final String CAMPO2 = "Modelo";
+        public static final String CAMPO3 = "NumeroVehiculo";
+        public static final String CAMPO4 = "FechaSubida";
+        public static final String CAMPO5 = "HoraSubida";
+    }
         public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE if not exists " + FeedEntry1.TABLE1_NAME + "(" +
                     FeedEntry1.CAMPO1 + " TEXT PRIMARY KEY," +
@@ -64,6 +72,14 @@ public class FeedReaderContract {
                     FeedEntry2.CAMPO15 + " TEXT, " +
                     "PRIMARY KEY(Matricula,KilometrosEntrada,FechaEntrada)"+");";
 
+    public static final String SQL_CREATE_ENTRIES_SUBIDA =
+            "CREATE TABLE if not exists " + ListaSubidas.TABLE_S_NAME + "(" +
+                    ListaSubidas.CAMPO1 + " TEXT," +
+                    ListaSubidas.CAMPO2 + " TEXT," +
+                    ListaSubidas.CAMPO3 + " INTEGER," +
+                    ListaSubidas.CAMPO4 + " TEXT," +
+                    ListaSubidas.CAMPO5 + " INTEGER);"+
+            "PRIMARY KEY(Matricula,FechaSubida,HoraSubida)"+");";
 
 
     public static final String SQL_DELETE_ENTRIES =

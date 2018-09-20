@@ -132,7 +132,7 @@ public class DamagesActivity extends AppCompatActivity {
 
     public void picsErraser(){
         for(int j=0; j<6;j++){
-            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg"};
+            final String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg"};
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File fileDelete = new File(root,nombres[j]);
             if (fileDelete.exists()){
@@ -159,7 +159,7 @@ public class DamagesActivity extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         ArrayList<Uri> uris = new ArrayList<>();
-        String[] nombres = new String[]{"0.jpg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg"};
+        String[] nombres = new String[]{"0.jpg","1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg"};
         for (int i=0; i<totalFotos+1;i++) {
             File root = new File(Environment.getExternalStorageDirectory(), "FotosDanos");
             File file = new File(root, nombres[i]);
@@ -183,8 +183,6 @@ public class DamagesActivity extends AppCompatActivity {
                }
            }, TIME);
        }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -219,8 +217,9 @@ public class DamagesActivity extends AppCompatActivity {
                 Bitmap reducedSizeBitmap = getBitmap(imageToUploadUri.getPath());
                 if(reducedSizeBitmap != null){
                     imagesViews[numFoto].setImageBitmap(reducedSizeBitmap);
-                    if (numFoto<12) {
-                        totalFotos = numFoto + 1;
+                    if (numFoto<11) {
+                        if(totalFotos<11){
+                        totalFotos = numFoto + 1;}
                         ++numFoto;
                     }else{
                         numFoto=0;
