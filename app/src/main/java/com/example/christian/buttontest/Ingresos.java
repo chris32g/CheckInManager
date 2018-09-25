@@ -43,7 +43,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import static com.example.christian.buttontest.FeedReaderContract.FeedEntry2.TABLE2_NAME;
 
 public class Ingresos extends AppCompatActivity {
 
@@ -54,7 +57,10 @@ public class Ingresos extends AppCompatActivity {
     public String emails = "chris32p@gmail.com, gescofet@hertz.com, spbcn61@hertz.com, juan.cano@grupounoctc.com, Checkinhertz.sans@grupounoctc.com";
     public String[] emailsList = emails.split(",");
     public static Boolean returnedDialog;
-//    public TextView nVehiculo = findViewById(R.id.nVehiculo);
+    //public TextView nVehiculo = findViewById(R.id.nVehiculo);
+    //public static String numvhET;
+    public ArrayList<String> listaEntradas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -70,6 +76,7 @@ public class Ingresos extends AppCompatActivity {
         listenerOnClearButton();
         onUnfocusedTextMatricula();
         ListenerEditTextkm();
+        longClickListenervhNum();
         blanqueator();
         hora=getHour();
         setTVHour();
@@ -122,8 +129,9 @@ public class Ingresos extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     try {
                                         generateNoteOnSD(Ingresos.this, fileNom, getActivity2Sdata());
+                                        //fillList(fileNom);
                                         writeNewArrive();
-                                        getToast("Añadido al archivo", 0);
+                                        getToast("Añadido", 0);
 
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -163,6 +171,57 @@ public class Ingresos extends AppCompatActivity {
         });
     }
 
+    public void fillList(String Filenom){
+        String dia = " '" + getDay() +"'";
+        String temp="";
+        listaEntradas = new ArrayList<String>();
+        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(Ingresos.this);
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry2.CAMPO1, //matricula
+                FeedReaderContract.FeedEntry2.CAMPO4, //numVh
+                FeedReaderContract.FeedEntry2.CAMPO2, //modelo
+                FeedReaderContract.FeedEntry2.CAMPO5, //contrato
+                FeedReaderContract.FeedEntry2.CAMPO6,  //fecha
+                FeedReaderContract.FeedEntry2.CAMPO7, //hora
+                FeedReaderContract.FeedEntry2.CAMPO8, //km
+                FeedReaderContract.FeedEntry2.CAMPO9, //combustible
+                FeedReaderContract.FeedEntry2.CAMPO10,//doños
+                FeedReaderContract.FeedEntry2.CAMPO15  //fecha
+
+        };
+        String selection = FeedReaderContract.FeedEntry2.CAMPO6 + " = ?";
+        String[] selectionArgs = {dia};
+        Cursor cursor = database.query(
+                TABLE2_NAME,                                                    // The table to query
+                projection,                                                     // The array of columns to return (pass null to get all)
+                selection,                                                      // The columns for the WHERE clause
+                selectionArgs,                               // The values for the WHERE clause
+                null,                                                   // don't group the rows
+                null,                                                    // don't filter by row groups
+                FeedReaderContract.FeedEntry2.CAMPO6 + " DESC," +
+                        FeedReaderContract.FeedEntry2.CAMPO7 + " DESC"          // The sort order
+        );
+
+        int cursorLength = cursor.getCount();
+        cursor.moveToFirst();
+        for(int i=0; i<cursorLength;i++)
+        {
+            listaEntradas.add(cursor.getString(0) +","+ cursor.getString(1)+","
+                    + cursor.getString(2) +"," + cursor.getString(3)+","
+                    + cursor.getString(4)+","+ cursor.getString(5)+","
+                    + cursor.getString(6)+","+ cursor.getString(7)+","
+                    + cursor.getString(8)+"," + cursor.getString(9)+","+"\n");
+            listaEntradas.add("test " + i + ",");
+            temp= listaEntradas.get(i);
+            getToast(temp,0);
+            generateNoteOnSD(Ingresos.this, Filenom,temp);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        database.close();
+    }
+
     public void listenerOnBackButton(){
         ImageButton backBtn = findViewById(R.id.volverBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -173,16 +232,37 @@ public class Ingresos extends AppCompatActivity {
         });
     }
 
-    public void openDialog(){
+    public void longClickListenervhNum(){
+        TextView numvh = findViewById(R.id.nVehiculo);
+        numvh.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                openDialog2();
+                return false;
+            }
+        });
+    }
 
+
+    public void openDialog(){
             Bundle bundle1 = new Bundle();
             bundle1.putString("textoMatricula",getMatricula());
             bundle1.putString("from", "Ingresos");
             DialogAddVh dialogoDatos = new DialogAddVh();
             dialogoDatos.setArguments(bundle1);
             dialogoDatos.show(getSupportFragmentManager(), "Introduzca Nuevo Vehiculo");
-
         }
+
+    public void openDialog2(){
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("textoMatricula",getMatricula());
+        bundle1.putString("textonumero", numVh );
+        bundle1.putString("textoModelo",modeloVh );
+        bundle1.putString("from", "editVh");
+        DialogAddVh dialogoDatos = new DialogAddVh();
+        dialogoDatos.setArguments(bundle1);
+        dialogoDatos.show(getSupportFragmentManager(), "Introduzca Nuevo Vehiculo");
+    }
 
     public void writeNewArrive(){
         getCarInfo();
@@ -291,7 +371,7 @@ public class Ingresos extends AppCompatActivity {
                 hora + "," +
                 getKm() + "," +
                 getFuel() + "," +
-                getTransfer() + "," +
+                getDanos() + "," +
                 getComents() + "," + "\n";
             }
 
@@ -378,7 +458,6 @@ public class Ingresos extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
               hora=getHour();
               setTVHour();
             }
@@ -388,6 +467,7 @@ public class Ingresos extends AppCompatActivity {
     public void ListenerEditTextkm(){
         final EditText km =findViewById(R.id.nKilometros);
         final TextView numvh = findViewById(R.id.nVehiculo);
+        final TextView matriculavh = findViewById(R.id.nMatricula);
         km.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -396,7 +476,7 @@ public class Ingresos extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(km.length()>2) {
+                if(km.length()>1 && matriculavh.length()>3) {
                     getCarInfo();
                     numvh.setText(numVh);
                 }
@@ -517,8 +597,7 @@ public class Ingresos extends AppCompatActivity {
                 String[] emails = {"chris32p@gmail.com","spbcn61@hertz.com, Checkinhertz.sans@grupounoctc.com"};
                 String subject = "Entradas " + getDay();
                 String bodyText = "Entradas ocurridas el dia " + getDay() +" hasta las: " + getHour();
-                Boolean adjunto = true;                                                                             //cambiar por verificacion real
-                sendEmail(emails, subject,bodyText,adjunto);
+                sendEmail(emails, subject,bodyText);
             }
         });
     }
@@ -534,7 +613,7 @@ public class Ingresos extends AppCompatActivity {
         });
     }
 
-    public void sendEmail (String[] emails, String subject, String bodyText, Boolean adjunto){
+    public void sendEmail (String[] emails, String subject, String bodyText){
         String fileNom = "checkin" + getDay() + ".csv";
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
@@ -543,18 +622,15 @@ public class Ingresos extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         File root = new File(Environment.getExternalStorageDirectory(), "IngresosHertz");
         File file = new File(root, fileNom);
-        if(adjunto) {
-           if (file.exists()){
-                Uri uri = Uri.fromFile(file);
-                emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
-                startActivity(Intent.createChooser(emailIntent, "gmail :"));
-           } else if (!adjunto) {
+           if (file.exists()) {
+               Uri uri = Uri.fromFile(file);
+               emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
                startActivity(Intent.createChooser(emailIntent, "gmail :"));
-           } else if (!file.exists()){
+           }else if (!file.exists()){
                getToast("no se encuentra el archivo", 1);
            }else{getToast("error desconocido", 1);}
         }
-    }
+
 
     public void generateNoteOnSD(Context context, String sFileName, String sBody) {
         try {
@@ -656,6 +732,17 @@ public class Ingresos extends AppCompatActivity {
             @Override
             public void run() {
                 blanqueator();
+            }
+        }, TIME);
+    }
+
+    public void handlTimercarNum(){
+        int TIME = 1000; //5000 ms (5 Seconds)
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
             }
         }, TIME);
     }

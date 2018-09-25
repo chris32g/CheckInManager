@@ -3,6 +3,7 @@ package com.example.christian.buttontest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,6 +20,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
@@ -32,12 +35,11 @@ public class DialogAddVh extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.addvhtodb, null);
-
+        final View view = inflater.inflate(R.layout.addvhtodb, null);
         from = this.getArguments().getString("from");
         final EditText edtNumVh = view.findViewById(R.id.vhNumFsDialog);
         final EditText edtModeloVh = view.findViewById(R.id.modelVhFsDialog);
-
+        final EditText matriculaVhDiag = view.findViewById(R.id.matriculaVhFsDialog);
         builder.setView(view).setTitle("Registro de Vehiculo")
                 .setNegativeButton("Atrás", new DialogInterface.OnClickListener() {
                     @Override
@@ -64,7 +66,7 @@ public class DialogAddVh extends AppCompatDialogFragment {
                         }catch (Exception e){carModelVh= "Sin Modelo";}
                     }
                 }catch (Exception e){carNum= 0000000;}
-
+if (from.equals("Ingresos")){
                 // Gets the data repository in write mode
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -79,12 +81,31 @@ public class DialogAddVh extends AppCompatDialogFragment {
                 Toast.makeText(getContext(), "el coche " + textoMatricula + " se guardo correctamente.", Toast.LENGTH_LONG).show();
                 Ingresos.returnedDialog=true;
             }
+            if (from.equals("editVh")){
+                    updateVh(edtNumVh.getText().toString().trim(),edtModeloVh.getText().toString().trim(),matriculaVhDiag.getText().toString().trim());
+                    Toast.makeText(getContext(), "Actualizado con exito", Toast.LENGTH_LONG).show();
+            }
+            //Ingresos.numvhET=(edtNumVh.getText().toString().trim());
+            }
         });
 
-        final EditText matriculaVhDiag = view.findViewById(R.id.matriculaVhFsDialog);
+
         textoMatricula = this.getArguments().getString("textoMatricula");
+        if(from.equals("editVh")){
+            edtNumVh.setText(this.getArguments().getString("textonumero"));
+            edtModeloVh.setText(this.getArguments().getString("textoModelo"));
+        }
         matriculaVhDiag.setText(textoMatricula);
+
         return builder.create();
+    }
+
+    public void updateVh(String newVhNumber, String newModel, String matricula){
+        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("update " + "DatosVehiculos" + " SET " + "NumeroVehiculo" + " = '" + newVhNumber.trim() +"', "
+                + "MODELO" + " ='" + newModel.trim() +"'" +
+                " WHERE " + "Matricula" + " ='" + matricula.trim() +"';" );
     }
 
 }
