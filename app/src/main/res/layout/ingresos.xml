@@ -8,25 +8,17 @@
     tools:context=".Ingresos"
     tools:layout_editor_absoluteY="73dp">
 
+
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.93"
+            android:layout_height="35dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,12 +45,6 @@
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="31dp" />
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9" />
-
             <ImageButton
                 android:id="@+id/clearButton"
                 android:layout_width="match_parent"
@@ -72,154 +58,165 @@
                 tools:layout_editor_absoluteY="1dp" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/nMatricula"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:ems="10"
-            android:hint="@string/ingreseMatriculaHint"
-            android:inputType="text"
-            android:shadowColor="#FFFF00"
-            android:singleLine="false"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textColorHint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="68dp" />
+            android:layout_weight=".22"
+            android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/nKilometros"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:ems="10"
-            android:hint="@string/ingreseKilometrosHint"
-            android:inputType="number"
-            android:singleLine="false"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-
-            android:textColorHint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="133dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.578">
-
-            <TextView
-                android:id="@+id/textView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:fontFamily="sans-serif"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:gravity="center_vertical"
-                android:text="@string/textoCombustible"
-                android:textAlignment="center"
-                android:textAppearance="@android:style/TextAppearance"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:typeface="normal"
-                tools:layout_editor_absoluteY="191dp" />
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spinnerCombustible"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:entries="@array/SpinnerCombustible"
-                android:gravity="center_horizontal|center"
-                android:spinnerMode="dialog"
-                android:textAlignment="gravity"
-                android:textColor="#FFFFFF"
-                tools:layout_editor_absoluteX="160dp"
-                tools:layout_editor_absoluteY="179dp" />
+                <EditText
+                    android:id="@+id/nMatricula"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:hint="@string/ingreseMatriculaHint"
+                    android:inputType="text"
+                    android:shadowColor="#FFFF00"
+                    android:singleLine="false"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="68dp" />
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/nKilometros"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:hint="@string/ingreseKilometrosHint"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
 
-        <TextView
-            android:id="@+id/fechahora"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.95"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteY="289dp" />
+                    android:textColorHint="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="133dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.578">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center_vertical"
+                        android:text="@string/textoCombustible"
+                        android:textAlignment="center"
+                        android:textAppearance="@android:style/TextAppearance"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:typeface="normal"
+                        tools:layout_editor_absoluteY="191dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerCombustible"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:entries="@array/SpinnerCombustible"
+                        android:gravity="center_horizontal|center"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="gravity"
+                        android:textColor="#FFFFFF"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="179dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/fechahora"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteY="289dp" />
+
+                <EditText
+                    android:id="@+id/nContrato"
+                    style="@style/Widget.AppCompat.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:hint="@string/ingreseContratoHint"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="206dp" />
+
+                <EditText
+                    android:id="@+id/etComentarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:hint="@string/ingreseComentariosHint"
+                    android:inputType="text|textLongMessage"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="347dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+                    <Switch
+                        android:id="@+id/checkTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/buttonCheckTransfer"
+                        android:textAlignment="center" />
+
+                    <Switch
+                        android:id="@+id/checkNuevoDaño"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:text="@string/checkNuevoDano"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.93"
-            android:orientation="horizontal">
-
-            <Switch
-                android:id="@+id/checkTransfer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:checked="false"
-                android:text="@string/buttonCheckTransfer" />
-
-            <Switch
-                android:id="@+id/checkNuevoDaño"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                android:text="@string/checkNuevoDano" />
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/nContrato"
-            style="@style/Widget.AppCompat.AutoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:ems="10"
-            android:hint="@string/ingreseContratoHint"
-            android:inputType="number"
-            android:maxLength="9"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="206dp" />
-
-        <EditText
-            android:id="@+id/etComentarios"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:ems="10"
-            android:hint="@string/ingreseComentariosHint"
-            android:inputType="text|textLongMessage"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="347dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:layout_weight="0.88"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -246,5 +243,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
